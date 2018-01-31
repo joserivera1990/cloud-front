@@ -1,0 +1,225 @@
+<div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+	No has agregado nada al carrito.
+</div>
+
+<div class="container main-container">
+	<div class="row">
+		<div class="clearfix visible-sm"></div>
+
+		<!-- Cart -->
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="col-lg-12 col-sm-12">
+				<span class="title"><i class="fa fa-chevron-right"></i> CHECKOUT </span>
+			</div>
+			<div class="col-lg-12 col-sm-12 hero-feature" ng-show="isGeneralDataVisible">
+				<h4>
+					<i class="fa fa-angle-double-right"></i> Datos Generales
+				</h4>
+				<div class="table-responsive">
+					<table class="table table-bordered tbl-checkout">
+						<tbody>
+							<tr>
+								<td>Primer Nombre</td>
+								<td>{{userData.primerNombre}}</td>
+								<td>Segundo Nombre</td>
+								<td>{{userData.segundoNombre}}</td>
+							</tr>
+							<tr>
+								<td>Primer Apellido</td>
+								<td>{{userData.primerApellido}}</td>
+								<td>Segundo Apellido</td>
+								<td>{{userData.segundoApellido}}</td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td>{{userData.correo}}</td>
+								<td>Celular</td>
+								<td>{{userData.numeroCelular}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<h4>
+					<i class="fa fa-angle-double-right"></i> Dirección de Facturación
+				</h4>
+				<div class="table-responsive">
+					<table class="table table-bordered tbl-checkout">
+						<tbody>
+							<tr>
+								<td>Dirección 1</td>
+								<td>{{userData.direccion1}}</td>
+								<td>Dirección 2</td>
+								<td>{{userData.direccion2}}</td>
+							</tr>
+							<tr>
+								<td>Ciudad</td>
+								<td>{{userData.ciudad}}</td>
+								<td>País</td>
+								<td>{{userData.pais}}</td>
+							</tr>
+							<tr>
+								<td>Estado</td>
+								<td>{{userData.estado}}</td>
+								<td>Código Postal</td>
+								<td>{{userData.zipcode}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn-group btns-cart">
+					<button type="button" class="btn btn-primary" ng-disabled="ngCart.getTotalItems() == 0"
+						ng-click="showPaymentMethods()"><i class="fa fa-arrow-circle-right"></i> Continuar</button>
+				</div>
+			</div>
+			<div class="col-lg-12 col-sm-12 hero-feature" ng-show="isPaymentMethodsVisible">
+				<h4>
+					<i class="fa fa-angle-double-right"></i> Productos
+				</h4>
+				<div class="table-responsive">
+					<table class="table table-bordered tbl-cart">
+						<thead>
+							<tr>
+								<td>Producto</td>
+								<td class="td-qty">Cantidad</td>
+								<td>Precio (Unidad)</td>
+								<td>Sub Total</td>
+								<td>Remover</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in ngCart.getCart().items track by $index">
+								<td>{{item.getName()}}</td>
+								<td class="text-center">{{item.getQuantity() | number}}</td>
+								<td class="price">{{item.getPrice() | currency}}</td>
+								<td>{{item.getTotal() | currency}}</td>
+								<td class="text-center"><a class="remove_cart" rel="2"
+									ng-click="ngCart.removeItemById(item.getId())"> <i
+										class="fa fa-trash-o"></i>
+								</a></td>
+							</tr>
+							<tr>
+								<td colspan="3" align="right">Total</td>
+								<td class="total" colspan="2"><b>{{ngCart.totalCost() |
+										currency}}</b></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<h4>
+					<i class="fa fa-angle-double-right"></i> Medio de Pago
+				</h4>
+					<div class="well">
+						<form ng-submit="submitPayment()">
+							<div class="form-group" ng-init="payment.medioPago = 'VISA'">
+				        	 	<label class="radio-inline">
+				        	 		<input id="visa" name="payment-method" value="VISA" type="radio"
+				        	 			ng-model="payment.medioPago">
+				        	 		<img class="payment-method"src="images/payment-methods/VISA.png"/>
+				        	 	</label>
+				    			<label class="radio-inline">
+				    				<input id="mastercard" name="payment-method" value="MASTERCARD" type="radio"
+				    					ng-model="payment.medioPago">
+				    				<img class="payment-method"src="images/payment-methods/MASTERCARD.png"/>
+				    			</label>
+						    	<label class="radio-inline">
+						    		<input id="amex" name="payment-method" value="AMEX" type="radio"
+						    			ng-model="payment.medioPago">
+						    		<img class="payment-method" src="images/payment-methods/AMEX.png"/>
+					    		</label>
+						    </div>
+						    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-feature">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<label for="fullname">Nombre en la tarjeta (*)</label>
+										<input type="text" class="form-control" id="fullname"
+											placeholder="Nombre Completo" required
+											data-ng-pattern="/^[A-Za-zá-úà-ùÁ-ÚÀ-Ù\s.'`_]*$/"
+											ng-model="payment.nombrePagador"
+											autocomplete="off"><br clear="all" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+										<label for="ccNumber">Número de tarjeta (*)</label>
+										<input type="text" class="form-control" id="ccNumber"
+											placeholder="5412 7512 3412 3456" required
+											ng-model="payment.numeroTarjeta"
+											autocomplete="off"><br clear="all" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+										<label for="ccSecurityCode">Código de seguridad (*)</label>
+										<input type="text" class="form-control" id="ccSecurityCode"
+											placeholder="000" required
+											ng-model="payment.codigoSeguridad"
+											autocomplete="off"><br clear="all" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<label>Fecha Vencimiento (*)</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+										<input type="text" class="form-control"
+											id="ccExpirationDateMonth" placeholder="MM" required
+											ng-model="payment.mesVencimiento" autocomplete="off">
+										<br clear="all" />
+									</div>
+									<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+										<input type="text" class="form-control"
+											id="ccExpirationDateYear" placeholder="AA" required
+											ng-model="payment.annoVencimiento" autocomplete="off">
+										<br clear="all" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<label>Cuotas (*)</label>
+									</div>
+								</div>
+								<div class="row" ng-init="payment.cuotas = '1'">
+									<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+										<select class="form-control" id="ccInstallments"
+											ng-model="payment.cuotas">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						<div class="btn-group btns-cart">
+							<button type="button" class="btn btn-primary" ng-click="showGeneralData()"><i class="fa fa-arrow-circle-left"></i> Volver</button>
+							<button type="submit" class="btn btn-success"><i class="fa fa-money"></i> Pagar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- End Cart -->
+	</div>
+</div>

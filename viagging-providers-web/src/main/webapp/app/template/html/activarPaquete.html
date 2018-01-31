@@ -1,0 +1,68 @@
+		<div class="main-content">
+			<div class="main-content-inner">
+				<!-- #section:basics/content.breadcrumbs -->
+			
+				<!-- /section:basics/content.breadcrumbs -->
+				<div class="page-content">
+					<!-- #section:settings.box -->
+					
+					<!-- /.ace-settings-container -->
+
+					<!-- /section:settings.box -->
+					<div class="page-header">
+						<h1>
+							Paquetes <small> <i
+								class="ace-icon fa fa-angle-double-right"></i>Activar / Desactivar Paquetes
+							</small>
+						</h1>
+					</div>
+					
+					<!-- /.page-header -->
+<!-- 					<div ng-app="providersapp" ng-controller="samplecontroller" ng-init="getCategory()" > -->
+					<div ng-app="providersapp" ng-controller="samplecontroller" ng-init="getPackages('')" >
+					
+					<div>
+				   <hr>					
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<table id="simple-table"
+											class="table  table-bordered table-hover">
+											<thead>
+												<tr>
+													<th class="center">Nombre</th>
+													<th class="center">Precio</th>
+													<th class="hidden-480 center">Descripción Corta</th>
+                                                    <th class="center">Activar/Desactivar</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="listPackages in listPackages track by listPackages.id">
+                                                     <td>{{ listPackages.nombre }}</td>												
+													<td class="center">{{ listPackages.precio }}</td>
+													<td>{{ listPackages.descripcion }}</td>
+													<td class="center" ><div class="btn-group dropup">
+																<button ng-click="activatePackage(listPackages.id,true);" ng-show="!listPackages.activo" class="btn btn-xs btn-danger">Activar</button>
+																<button ng-click="activatePackage(listPackages.id,false);" ng-show="listPackages.activo" class="btn btn-xs btn-danger">Desactivar</button>
+																</div></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>						  
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.main-content -->
+
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
+	</div>

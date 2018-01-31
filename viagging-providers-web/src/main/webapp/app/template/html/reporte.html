@@ -1,0 +1,69 @@
+<div class="main-container" id="main-container">
+	<div class="main-content">
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Reportes <small> <i
+						class="ace-icon fa fa-angle-double-right"></i> Generar Reporte
+					</small>
+				</h1>
+			</div>
+			<div>
+<!-- 				<form name="myForm"> -->
+					<div class="form-group col-sm-12">
+						<label for="repeatSelect" class="col-sm-1 control-label no-padding-right"> Tipo </label> 
+						<div class="col-sm-11">
+							<select name="repeatSelect" id="repeatSelect" ng-model="reporte.tipo" class="col-xs-10 col-sm-7">
+								<option ng-repeat="option in tipos" value="{{option}}">{{option}}</option>
+							</select>
+						</div>
+					</div>	
+					
+					<div class="form-group col-sm-12">
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1">Desde </label>
+						<div class="col-sm-3">
+				        	<input type="text" uib-datepicker-popup ng-model="reporte.fechaInical" is-open="statusInitial.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+				            <button type="button" ng-click="openInitial($event)">
+				            	<i class="glyphicon glyphicon-calendar"></i>
+				            </button>
+				        </div>
+				        
+				        <label class="col-sm-1" for="form-field-1">Hasta </label>
+				        <div class="col-sm-3">
+				             <input type="text"  uib-datepicker-popup ng-model="reporte.fechaFinal" is-open="statusFinal.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+				             <button type="button"  ng-click="openFinal($event)">
+				             	<i class="glyphicon glyphicon-calendar"></i>
+				             </button>
+				        </div>
+					</div>
+					<div class="form-group col-sm-12">
+						<label class="col-sm-1 control-label no-padding-right" for="repeatSelect"> Servicios </label> 
+						<div class="col-sm-11">
+							<select
+								name="repeatSelect" id="repeatSelect" ng-model="reporte.listaServicios[0].id" class="col-xs-10 col-sm-7">
+								<option ng-repeat="option in servicios" value="{{option.id}}">{{option.nombre}}</option>
+							</select>
+						</div>
+					</div>	
+					
+					<div class="form-group col-sm-12">
+						<label class="col-sm-1 control-label no-padding-right" for="repeatSelect"> Paquete </label>
+						<div class="col-sm-11">
+							<select
+								name="repeatSelect" id="repeatSelect" ng-model="reporte.listaPaquetes[0].id" class="col-xs-10 col-sm-7">
+								<option ng-repeat="option in paquetes" value="{{option.id}}">{{option.nombre}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-7" align="right">
+						<button ng-click="generarReporte()"
+							class="btn btn-sm btn-primary" type="button">
+							<i class="ace-icon fa fa-check bigger-110 "></i> Generar
+						</button>
+					</div>
+<!-- 				</form> -->
+			</div>
+		</div>
+	</div>
+</div>

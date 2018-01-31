@@ -1,0 +1,30 @@
+    <div class="container">
+        <div class="center-block login-form">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    <form role="form" ng-submit="loginUser()">
+                        <div class="form-group">
+                            <div class="input-group login-input">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" ng-model="userLogin.login" class="form-control" placeholder="Usuario" required>
+                            </div>
+                            <br>
+                            <div class="input-group login-input">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input type="password" ng-model="userLogin.password" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-long-arrow-right"></i> Login</button>
+                            <button ng-if="variability.hasFacebook" type="button" class="btn btn-xs btn-primary btn-login-social" ng-click="loginFacebookUser()"><i class="fa fa-facebook"></i></button>
+                            <button ng-if="variability.hasTwitter" type="button" class="btn btn-xs btn-info btn-login-social" ng-click="loginTwitterUser()"><i class="fa fa-twitter"></i></button>
+                            <br ng-if="!variability.hasTwitter && !variability.hasFacebook">
+                            <hr>
+                            <a ui-sref="register" class="btn btn-success btn-sm pull-right">Registro</a>
+                            <a class="btn btn-warning btn-sm">Recordar contraseña</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

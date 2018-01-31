@@ -1,0 +1,62 @@
+<div class="main-content">
+	<div class="main-content-inner">
+		<!-- #section:basics/content.breadcrumbs -->
+
+		<!-- /section:basics/content.breadcrumbs -->
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Preguntas <small> <i
+						class="ace-icon fa fa-angle-double-right"></i>Consultar Preguntas
+					</small>
+				</h1>
+			</div>
+			<div>
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
+						<div class="row">
+							<div class="col-xs-12">
+								<table id="simple-table"
+									class="table  table-bordered table-hover">
+									<thead>
+										<tr>
+											<th class="center">Id Pregunta</th>
+											<th class="center">Id Usuario</th>
+											<th class="center">Id Servicio</th>
+											<th class="center">Id Paquete</th>
+											<th class="center">Pregunta</th>
+											<th class="center">Respuesta</th>
+											<th class="center">Opciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="question in questions track by question.id">
+											<td>{{ question.id }}</td>
+											<td>{{ question.usuario.id }}</td>
+											<td>{{ question.servicio.id }}</td>
+											<td>{{ question.paquete.id }}</td>
+											<td>{{ question.pregunta }}</td>
+											<td>{{ question.respuesta }}</td>
+											<td><a ng-click="getPregunta(question.id);"
+												ui-sref="responderpregunta"
+												ng-show="question.respuesta == null"
+												class="btn btn-danger btn-sm"> <i
+													class="ace-icon fa fa-reply icon-only"></i></a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.main-content -->
+
+	<a href="#" id="btn-scroll-up"
+		class="btn-scroll-up btn btn-sm btn-inverse"> <i
+		class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+	</a>
+</div>

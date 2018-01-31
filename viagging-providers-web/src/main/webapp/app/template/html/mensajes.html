@@ -1,0 +1,299 @@
+<div class="main-container" id="main-container">
+	<div class="main-content">
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Mensajes <small> <i
+						class="ace-icon fa fa-angle-double-right"></i> Envi&oacute
+						Mensajes
+					</small>
+				</h1>
+			</div>
+			<div ng-init="getConversation()">
+
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- #section:pages/inbox -->
+								<div class="tabbable">
+									<ul id="inbox-tabs"
+										class="inbox-tabs nav nav-tabs padding-16 tab-size-bigger tab-space-1">
+										<!-- #section:pages/inbox.compose-btn -->
+										<li ng-hide="ocultarBotonNewConversation"
+											class="li-new-mail pull-right"><a data-toggle="tab"
+											href="#write" data-target="write" class="btn-new-mail"> <span
+												class="btn btn-purple no-border"> <i
+													class="ace-icon fa fa-envelope bigger-130"></i> <span
+													ng-click="newConveration()" class="bigger-110">
+														Nueva Conversaci&oacuten </span>
+											</span>
+										</a></li>
+										<li ng-hide="ocultarSeccionMensajes"
+											class="li-new-mail pull-right"><a data-toggle="tab"
+											href="#write" data-target="write" class="btn-new-mail"> <span
+												class="btn btn-purple no-border"> <i
+													class="ace-icon fa fa-envelope bigger-130"></i> <span
+													ng-click="writeMessage()" class="bigger-110">Write
+														Message</span>
+											</span>
+										</a></li>
+										<!-- /.li-new-mail -->
+
+										<!-- /section:pages/inbox.compose-btn -->
+										<li class="active"><a data-toggle="tab" href="#inbox"
+											data-target="inbox"> <i
+												class="blue ace-icon fa fa-inbox bigger-130"></i> <span
+												class="bigger-110">Inbox</span>
+										</a></li>
+									</ul>
+
+									<div class="tab-content no-border no-padding">
+										<div id="inbox" class="tab-pane in active">
+											<div class="message-container">
+												<!-- #section:pages/inbox.navbar -->
+												<div id="id-message-list-navbar"
+													class="message-navbar clearfix">
+													<div class="message-bar">
+														<div class="message-infobar" id="id-message-infobar">
+															<span class="blue bigger-150">Inbox</span>
+														</div>
+													</div>
+
+													<div>
+														<!-- #section:pages/inbox.navbar-search -->
+														<div class="nav-search minimized">
+															<form class="form-search">
+																<span class="input-icon"> <input type="text"
+																	autocomplete="off" class="input-small nav-search-input"
+																	placeholder="Search inbox ..." /> <i
+																	class="ace-icon fa fa-search nav-search-icon"></i>
+																</span>
+															</form>
+														</div>
+
+														<!-- /section:pages/inbox.navbar-search -->
+													</div>
+												</div>
+
+
+
+												<!-- /section:pages/inbox.navbar -->
+												<div ng-hide="ocultarSeccionConversation"
+													class="message-list-container">
+													<!-- #section:pages/inbox.message-list -->
+													<div class="message-list" id="message-list">
+														<!-- #section:pages/inbox.message-list.item -->
+														<div class="message-item message-unread"
+															ng-repeat="conversation in listConversation track by $index">
+															<span class="sender"
+																ng-click="getMessageConversation(conversation.id)">{{
+																conversation.usuario2.primerNombre }} </span> <span
+																class="summary"> <span class="text"
+																ng-click="getMessageConversation(conversation.id)">
+																	{{ conversation.usuario2.primerApellido }} </span>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div ng-hide="ocultarSeccionMensajes"
+													class="message-list-container">
+													<!-- #section:pages/inbox.message-list -->
+													<div class="message-list" id="message-list">
+														<!-- #section:pages/inbox.message-list.item -->
+														<div class="message-item message-unread"
+															ng-repeat="message in listMessage track by $index | orderBy:'id':false">
+															<span class="sender" title="Alex John Red Smith">{{
+																message.primerNombre }} </span> <span class="time">{{
+																message.fecha }}</span> <span class="summary"> <span
+																class="text" ng-click="showMessage(message.mensaje)">
+																	{{ message.mensaje }} </span>
+															</span>
+														</div>
+													</div>
+													<div class="hr hr-18 dotted"></div>
+													<div ng-hide="ocultarBotonAtras" class="align-right">
+														<button ng-click="beforeConversation()"
+															id="id-add-attachment" type="button"
+															class="btn btn-sm btn-danger">
+															<i class="ace-icon  bigger-140"></i> Atras
+														</button>
+													</div>
+												</div>
+
+
+												<!-- /section:pages/inbox.message-footer -->
+											</div>
+										</div>
+									</div>
+									<!-- /.tab-content -->
+								</div>
+								<!-- /.tabbable -->
+
+								<!-- /section:pages/inbox -->
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+
+
+						<div ng-hide="ocultarShowMensaje">
+							<form name="messageForm" id="id-message-form"
+								class="form-horizontal message-form col-xs-12">
+								<!-- #section:pages/inbox.compose -->
+								<div>
+
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right">
+											<span class="inline space-24 hidden-480"></span> Message:
+										</label>
+
+										<!-- #section:plugins/editor.wysiwyg -->
+										<div class="col-sm-9">
+											<div class="">
+												<textarea disabled ng-model="showedMessage" rows="4"
+													cols="60"></textarea>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<!-- /section:pages/inbox.compose -->
+							</form>
+						</div>
+
+						<div ng-hide="ocultarEscribirMensaje">
+							<form name="messageForm" ng-submit="sendMessage()"
+								id="id-message-form"
+								class="form-horizontal message-form col-xs-12">
+								<!-- #section:pages/inbox.compose -->
+								<div>
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right">
+											<span class="inline space-24 hidden-480"></span> Message:
+										</label>
+
+										<!-- #section:plugins/editor.wysiwyg -->
+										<div class="col-sm-9">
+											<div class="">
+												<textarea ng-model="wroteMessage" rows="4" cols="60"></textarea>
+											</div>
+										</div>
+
+										<!-- /section:plugins/editor.wysiwyg -->
+									</div>
+
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="align-right">
+										<button ng-click="beforeConversation()" id="id-add-attachment"
+											type="button" class="btn btn-sm btn-danger">
+											<i class="ace-icon  bigger-140"></i> Atras
+										</button>
+										<button type="submit" id="id-add-attachment" type="button"
+											class="btn btn-sm btn-danger">
+											<i class="ace-icon  bigger-140"></i> Enviar
+										</button>
+									</div>
+
+									<div class="space"></div>
+								</div>
+
+								<!-- /section:pages/inbox.compose -->
+							</form>
+						</div>
+
+
+
+						<div ng-hide="ocultarEscribirMensajeProveedor">
+							<form name="messageForm" ng-submit="sendMessage()"
+								id="id-message-form"
+								class="form-horizontal message-form col-xs-12">
+								<!-- #section:pages/inbox.compose -->
+								<div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-field-recipient">Recipient:</label>
+
+										<div class="col-sm-9">
+											<span class="input-icon"> <input name="recipient"
+												id="form-field-recipient" placeholder="Recipient" /> <i
+												class="ace-icon fa fa-user"></i>
+											</span>
+										</div>
+									</div>
+
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right">
+											<span class="inline space-24 hidden-480"></span> Message:
+										</label>
+
+										<!-- #section:plugins/editor.wysiwyg -->
+										<div class="col-sm-9">
+											<div class="">
+												<textarea ng-model="showedMessage" rows="4" cols="60"></textarea>
+											</div>
+										</div>
+
+										<!-- /section:plugins/editor.wysiwyg -->
+									</div>
+
+									<div class="hr hr-18 dotted"></div>
+
+									<div class="align-right">
+										<button ng-click="showMessage(message.mensaje)"
+											id="id-add-attachment" type="button"
+											class="btn btn-sm btn-danger">
+											<i class="ace-icon  bigger-140"></i> Atras
+										</button>
+										<button type="submit" id="id-add-attachment" type="button"
+											class="btn btn-sm btn-danger">
+											<i class="ace-icon  bigger-140"></i> Enviar
+										</button>
+									</div>
+
+									<div class="space"></div>
+								</div>
+
+								<!-- /section:pages/inbox.compose -->
+							</form>
+						</div>
+
+						<div ng-hide="ocultarNewConversation">
+							<form name="myForm">
+								<label for="repeatSelect"> Usuarios</label> <select
+									name="repeatSelect" id="repeatSelect" ng-model="valor">
+									<option ng-repeat="option in listUsers" value="{{option.id}}">{{option.primerNombre}}
+										{{option.primerApellido}}</option>
+								</select>
+								<div class="col-md-offset-3 col-md-9">
+									<button ng-click="crearConversacion(valor)"
+										class="btn btn-sm btn-primary" type="button">
+										<i class="ace-icon fa fa-check bigger-110"></i> Crear
+										conversaci&oacuten
+									</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

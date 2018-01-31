@@ -1,0 +1,43 @@
+<div class="alert alert-warning" role="alert" ng-show="orders.length === 0">
+    No ha realizado compras
+</div>
+<div class="container main-container">
+	<div class="row">
+		<div class="clearfix visible-sm"></div>
+
+		<!-- Order list -->
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="col-lg-12 col-sm-12">
+				<span class="title"><i class="fa fa-cart-plus"></i> LISTA DE COMPRAS</span>
+			</div>
+			<div class="col-lg-12 col-sm-12 hero-feature">
+
+				<div class="table-responsive">
+					<table class="table table-bordered tbl-cart">
+						<thead>
+							<tr>
+								<td><i class="fa fa-star"></i> Orden</td>
+								<td><i class="fa fa-money"></i> Valor</td>
+								<td><i class="fa fa-calendar"></i> Fecha</td>
+								<td><i class="fa fa-check-circle-o"></i> Estado</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="order in orders">
+								<td><a ui-sref="order-detail({orderId:order.id})">#{{order.id}}</a></td>
+								<td>{{order.transaccion.valor | currency}}</td>
+								<td>{{order.fechaCompra}}</td>
+								<td><span ng-class="{'label-success' : order.transaccion.estado == 'APPROVED',
+													 'label-warning' : order.transaccion.estado == 'PENDING',
+											 		 'label-danger' : order.transaccion.estado == 'DECLINED'}" 
+									class="label">{{order.transaccion.estado}}</span></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- End order list -->
+	</div>
+</div>

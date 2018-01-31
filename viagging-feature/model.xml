@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="4">
+		<struct>
+			<and abstract="true" mandatory="true" name="Marketplaces">
+				<and mandatory="true" name="CatalogoServicios">
+					<feature mandatory="true" name="Busqueda"/>
+					<feature mandatory="true" name="Preguntas"/>
+					<and name="PCalificar">
+						<feature mandatory="true" name="PComentario"/>
+					</and>
+				</and>
+				<feature name="Mensajeria"/>
+				<and mandatory="true" name="CarritoCompras">
+					<and mandatory="true" name="Transaccion">
+						<or name="Publicacion">
+							<feature mandatory="true" name="PFacebook"/>
+							<feature mandatory="true" name="PTwitter"/>
+						</or>
+					</and>
+				</and>
+				<and mandatory="true" name="Autenticacion">
+					<feature name="Facebook"/>
+					<feature name="Twitter"/>
+					<feature mandatory="true" name="Portal"/>
+				</and>
+				<and name="Reportes">
+					<feature mandatory="true" name="DeCompras"/>
+					<feature mandatory="true" name="DeBusquedas"/>
+					<feature mandatory="true" name="DeConsultas"/>
+				</and>
+				<and name="Clima">
+					<feature mandatory="true" name="Temperatura"/>
+					<feature mandatory="true" name="EstadoClima"/>
+				</and>
+				<feature mandatory="true" name="AdministracionMP"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>PFacebook</var>
+					<var>Facebook</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>PTwitter</var>
+					<var>Twitter</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="false" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

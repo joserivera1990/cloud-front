@@ -1,0 +1,50 @@
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- text logo on mobile view -->
+            <a class="navbar-brand visible-xs" href="index.html">Viagging Market Place</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+<!--             	<li><a ui-sref="search"><i class="fa fa-search"></i> Buscar</a></li> -->
+                <li><a ui-sref="home"><i class="fa fa-th-large"></i> Cat&aacute;logo</a></li>
+                <li><a ui-sref="cart"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
+                <li><a ui-sref="checkout"><i class="fa fa-chevron-right"></i> Checkout</a></li>
+                <li><a ui-sref="faq"><i class="fa fa-check"></i> FAQ</a></li>
+                <li class="nav-dropdown">
+                	<a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
+					M&aacute;s <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+                        <li><a ui-sref="about"><i class="fa fa-bookmark"></i> Acerca de Viagging</a></li>
+                        <li><a ui-sref="contact"><i class="fa fa-pencil-square"></i> Contacto</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            	<li ng-if="!isUserLoggedIn"><a ui-sref="login"><i class="fa fa-key"></i> Login</a></li>
+            	<li ng-if="!isUserLoggedIn"><a ui-sref="register"><i class="fa fa-user-plus"></i> Registro</a></li>
+            	<li ng-if="isUserLoggedIn" class="nav-dropdown">
+                	<a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;padding-top: 7px;padding-bottom: 7px;">
+                	<img class="nav-user-photo" src="../app/images/user.png">
+					{{userData.primerNombre}} {{userData.primerApellido}} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+                        <li><a ui-sref="profile"><i class="fa fa-user"></i> Perfil</a></li>
+                        <li><a ui-sref="orders"><i class="fa fa-cart-plus"></i> Compras</a></li>
+                        <li ng-if="variability.hasMessage"><a ui-sref="messages"><i class="fa fa-envelope"></i> Mensajes</a></li>
+                        <li><a ui-sref="wishlist"><i class="fa fa-heart"></i> Deseos</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-click="logoutUser()" style="cursor: pointer;"><i class="fa fa-sign-out"></i> Salir</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<title>User Profile Page - Ace Admin</title>
+
+<meta name="description" content="3 styles with inline editable feature" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/font-awesome.css" />
+
+<!-- page specific plugin styles -->
+<link rel="stylesheet" href="../assets/css/jquery-ui.custom.css" />
+<link rel="stylesheet" href="../assets/css/jquery.gritter.css" />
+<link rel="stylesheet" href="../assets/css/select2.css" />
+<link rel="stylesheet" href="../assets/css/bootstrap-datepicker3.css" />
+<link rel="stylesheet" href="../assets/css/bootstrap-editable.css" />
+
+<!-- text fonts -->
+<link rel="stylesheet" href="../assets/css/ace-fonts.css" />
+
+<!-- ace styles -->
+<link rel="stylesheet" href="../assets/css/ace.css"
+	class="ace-main-stylesheet" id="main-ace-style" />
+<script src="../assets/js/ace-extra.js"></script>
+<script src="../../vendor/angular/angular.js"></script>
+<script src="../../js/controllers/AppCtrl.js"></script>
+</head>
+<body class="no-skin">
+	<div>
+		<div ng-app="sampleapp" ng-controller="samplecontroller" ng-init="test1()">
+
+			<div id="user-profile-1" class="user-profile row">
+				<div class="col-xs-12 col-sm-3 center">
+					<div>
+		                <img data-ng-src="data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8KCwkMEQ8SEhEP
+ERATFhwXExQaFRARGCEYGhwdHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4e
+Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADCAMIDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDowKdi
+gCnAVBIgFOxS4pcUAIBS4pQKDwM9qAGOdi5J6VwHjrxlb2guILWT94keQw+mf8K2fHPie10TTHmZ
+1JY7VUHqcd6+b9X1SW7vbiRGYK7EgFieM0FWOw1jx/ezXzzRSMF8sIgzwOKxD4g1C8uXd58mTkkj
+pXMZdjkjPNaltBcbAIY9nHJIyf1qZNR3NIpvY1SYZXGx3SNF+d8n5pME/h2qDPnpKkeWdRuZmPYc
+YGfrRZ288CFNjMrc9Op96khsr1bg3CxFQ3OAOmOlT7WHcv2cuxe0dWSzllW4TzUICAZzx34rKdZT
+fyyp5gDNlXY4yPUVPaWl1ayu7K27BAOM7asIskyKkRYMpzvlAwoz2H5dfSrjJNEuLCXWr670RrQp
+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
+0UUUAf/Z"/>
+<img data-ng-src="data:image/png;base64,{{user.data}}"/>
+						<!--  span class="profile-picture"> <img id="avatar"
+							class="editable img-responsive" alt="Alex's Avatar"
+							src="../assets/avatars/profile-pic.jpg" />
+						</span-->
+					</div>
+				</div>
+
+				<div class="col-xs-12 col-sm-9">
+
+					<div class="space-12"></div>
+
+					<!-- #section:pages/profile.info -->
+					<div class="profile-user-info profile-user-info-striped">
+						<div class="profile-info-row">
+							<div class="profile-info-name">Username</div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="username">alexdoe</span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name">Location</div>
+
+							<div class="profile-info-value">
+								<i class="fa fa-map-marker light-orange bigger-110"></i> <span
+									class="editable" id="country">{{ post1.correo }}</span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name">Age</div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="age">{{ post1.title }}</span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name">Joined</div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="signup">2010/06/20</span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name">Last Online</div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="login">3 hours ago</span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name">About Me</div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="about">Editable as WYSIWYG</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

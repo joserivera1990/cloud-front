@@ -1,0 +1,96 @@
+<div ng-controller="samplecontroller"
+	ng-init="getDatosPaseoEcologico()">
+
+	<div id="user-profile-1" class="user-profile row">
+		<div class="col-xs-12 col-sm-3 center">
+			<div>
+				<img
+					data-ng-src="data:image/png;base64,{{paseoEcologico.servicio.imagenPrincipal}}"
+					width="200" height="200" />
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-9">
+
+			<div class="space-12"></div>
+
+			<!-- #section:pages/profile.info -->
+			<div class="profile-user-info profile-user-info-striped">
+				<div class="profile-info-row">
+					<div class="profile-info-name">Nombre</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="nombre">{{
+							paseoEcologico.servicio.nombre }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Descripci&oacuten</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="descripcion">{{
+							paseoEcologico.servicio.descripcionCorta }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Ciudad</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="ciudad">{{ paseoEcologico.ciudad
+							}}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Precio</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="precio">{{
+							paseoEcologico.servicio.precio }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Fecha</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="fecha">{{ paseoEcologico.fecha
+							}}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Restricciones</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="restricciones">{{
+							paseoEcologico.servicio.restricciones }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Horario</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="horarioApertura">{{
+							paseoEcologico.horario }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Tiempo de Recorrido</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="tiempoDeRecorrido">{{
+							paseoEcologico.tiempoDeRecorrido }}</span>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>

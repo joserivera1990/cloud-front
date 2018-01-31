@@ -1,0 +1,95 @@
+<div ng-controller="samplecontroller" ng-init="getDatosAlimentacion()">
+
+	<div id="user-profile-1" class="user-profile row">
+		<div class="col-xs-12 col-sm-3 center">
+			<div>
+				<img
+					data-ng-src="data:image/png;base64,{{alimentacion.servicio.imagenPrincipal}}"
+					width="200" height="200" />
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-9">
+
+			<div class="space-12"></div>
+
+			<!-- #section:pages/profile.info -->
+			<div class="profile-user-info profile-user-info-striped">
+				<div class="profile-info-row">
+					<div class="profile-info-name">Nombre</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="nombre">{{
+							alimentacion.servicio.nombre }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Descripci&oacuten</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="descripcion">{{
+							alimentacion.servicio.descripcionCorta }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Ciudad</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="ciudad">{{ alimentacion.ciudad
+							}}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Precio Menor</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="precioMenor">{{
+							alimentacion.precioMenor }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Precio Mayor</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="precioMayor">{{
+							alimentacion.precioMayor }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Restricciones</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="restricciones">{{
+							alimentacion.servicio.restricciones }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Horario Apertura</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="horarioApertura">{{
+							alimentacion.horarioApertura }}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">Horario Cierre</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="horarioCierre">{{
+							alimentacion.horarioCierre }}</span>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>

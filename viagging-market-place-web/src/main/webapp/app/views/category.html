@@ -1,0 +1,28 @@
+<span class="title" style="border-bottom:0px; margin-bottom:10px;">Detalles</span>
+<div ng-switch="servicio.categoria">
+  <div ng-switch-when="ALIMENTACION">
+  	<p ng-show="servicio.alimentacion.ciudad">Ciudad: {{servicio.alimentacion.ciudad}}</p>
+  	<p ng-show="servicio.alimentacion.horarioApertura" >Horario apertura: {{servicio.alimentacion.horarioApertura}}</p>
+  	<p ng-show="servicio.alimentacion.horarioCierre">Horario cierre: {{servicio.alimentacion.horarioCierre}}</p>
+  	<p ng-show="servicio.alimentacion.precioMenor">Precio mánimo: {{servicio.alimentacion.precioMenor | currency}}</p>
+  	<p ng-show="servicio.alimentacion.precioMayor">Precio mínimo: {{servicio.alimentacion.precioMayor | currency}}</p>
+  </div>
+  <div ng-switch-when="ALOJAMIENTO">
+  	<p ng-show="servicio.alojamiento.ciudad">Ciudad: {{servicio.alojamiento.ciudad}}</p>
+  </div>
+  <div ng-switch-when="TRANSPORTE">
+  	<p ng-show="servicio.transporte.lugarOrigen">Ciudad Origen: {{servicio.transporte.lugarOrigen}}</p>
+  	<p ng-show="servicio.transporte.lugarDestino">Ciudad Destino: {{servicio.transporte.lugarDestino}}</p>
+  	<p ng-show="servicio.transporte.tipoTransporte">Tipo: {{servicio.transporte.tipoTransporte}}</p>
+  	<p ng-show="servicio.transporte.tiempoEstimado">Tiempo de recorrido (horas): {{servicio.transporte.tiempoEstimado}}</p>
+  	<p ng-show="servicio.transporte.horarioInicio">Horario Inicio: {{servicio.transporte.horarioInicio}}</p>
+  	<p ng-show="servicio.transporte.horarioFin">Horario Fin: {{servicio.transporte.horarioFin}}</p>
+  	<p ng-show="servicio.transporte.frecuenciaSalida">Frecuencia salida (horas: {{servicio.transporte.frecuenciaSalida}}</p>
+  	<p ng-show="servicio.transporte.numeroPasajeros">Frecuencia salida (horas: {{servicio.transporte.numeroPasajeros}}</p>
+  </div>
+  <div ng-switch-when="PASEO_ECOLOGICO">
+  	<p ng-show="servicio.paseoEcologico.ciudad">Ciudad: {{servicio.paseoEcologico.ciudad}}</p>
+  	<p ng-show="servicio.paseoEcologico.horario">Horario: {{servicio.paseoEcologico.horario}}</p>
+  	<p ng-show="servicio.paseoEcologico.tiempoDeRecorrido">Tiempo de recorrido (horas): {{servicio.paseoEcologico.tiempoDeRecorrido}}</p>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<header>
+	<div class="container">
+		<div class="row">
+
+			<!-- Logo -->
+			<div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+				<div class="well logo">
+					<a href="index.html"> Viagging <span>Market Place</span>
+					</a>
+					<div>by Orange®</div>
+				</div>
+			</div>
+			<!-- End Logo -->
+
+			<!-- Search Form -->
+	            <div class="col-lg-5 col-md-4 col-sm-7 col-xs-12">
+	            	<div class="well">
+	                    <form ng-submit="buscarProductos()">
+	                        <div class="input-group">
+	                            <input type="text" class="form-control input-search" placeholder="Buscar..."
+	                            	ng-model="busqueda"/>
+	                            <span class="input-group-btn">
+	                                <button class="btn btn-primary no-border-left" type="submit"><i class="fa fa-search"></i> Buscar</button>
+	                            </span>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <!-- End Search Form -->
+
+			<!-- Shopping Cart List -->
+			<div class="col-lg-3 col-md-4 col-sm-5">
+				<ngcart-summary></ngcart-summary>
+			</div>
+			<!-- End Shopping Cart List -->
+		</div>
+	</div>
+</header>

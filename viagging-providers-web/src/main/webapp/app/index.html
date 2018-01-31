@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Viagging Admin</title>
+		<meta name="description" content="Common form elements and layouts" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="template/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="template/assets/css/font-awesome.css" />
+		<link rel="stylesheet" href="template/assets/css/ace-fonts.css" />
+		<link rel="stylesheet" href="template/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="vendor/angular/ngDialog-theme-default.css" />
+		<link rel="stylesheet" href="vendor/angular/ngDialog.css" />
+		<script src="template/assets/js/ace-extra.js"></script>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+<!--     	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+  
+	</head>
+	<body ng-app="viaggingApp" ng-controller="AppCtrl">
+		<!-- Header -->
+		<providers-header></providers-header>
+		<!-- End Header -->
+
+		<!-- Navigation -->
+		<providers-menu></providers-menu>
+<!-- 	    End Navigation -->
+
+		<!-- Content -->
+		<div ui-view></div>
+		<!-- End Content -->
+
+		<!-- Footer -->
+		<providers-footer></providers-footer>
+<!-- 	    End Footer -->
+
+	    <a href="#top" class="back-top text-center" onclick="$('body,html').animate({scrollTop:0},500); return false">
+	    	<i class="fa fa-angle-double-up"></i>
+	    </a>
+	    <script src="template/assets/js/jquery.js"></script>
+		<script src="template/assets/js/bootstrap.js"></script>
+		
+		<script src="template/assets/js/jquery-ui.custom.js"></script>
+		<script src="template/assets/js/jquery.ui.touch-punch.js"></script>
+		<script src="template/assets/js/chosen.jquery.js"></script>
+		<script src="template/assets/js/fuelux/fuelux.spinner.js"></script>
+		<script src="template/assets/js/date-time/bootstrap-datepicker.js"></script>
+		<script src="template/assets/js/date-time/bootstrap-timepicker.js"></script>
+		<script src="template/assets/js/date-time/moment.js"></script>
+		<script src="template/assets/js/date-time/daterangepicker.js"></script>
+		<script src="template/assets/js/date-time/bootstrap-datetimepicker.js"></script>
+		<script src="template/assets/js/bootstrap-colorpicker.js"></script>
+		<script src="template/assets/js/jquery.knob.js"></script>
+		<script src="template/assets/js/autosize.js"></script>
+		<script src="template/assets/js/jquery.inputlimiter.1.3.1.js"></script>
+		<script src="template/assets/js/jquery.maskedinput.js"></script>
+		<script src="template/assets/js/bootstrap-tag.js"></script>
+		
+<!--         <script src="vendor/angular/angular.js"></script> -->
+		<script src="vendor/angular/angular-resource.min.js"></script>
+		<script src="vendor/angular/angular-route.min.js"></script>
+		<script src="vendor/angular/angular-ui-router.min.js"></script>
+<!-- 		<script src="vendor/angular/ui-bootstrap.min.js"></script> -->
+		<script src="vendor/angular/angular-resource.min.js"></script>
+		<script src="vendor/angular/ngDialog.js"></script>
+		<script src="js/angular-file-upload.min.js"></script>
+		
+		<!-- ace scripts -->
+		<script src="template/assets/js/ace/elements.scroller.js"></script>
+		<script src="template/assets/js/ace/elements.colorpicker.js"></script>
+		<script src="template/assets/js/ace/elements.fileinput.js"></script>
+		<script src="template/assets/js/ace/elements.typeahead.js"></script>
+		<script src="template/assets/js/ace/elements.wysiwyg.js"></script>
+		<script src="template/assets/js/ace/elements.spinner.js"></script>
+		<script src="template/assets/js/ace/elements.treeview.js"></script>
+		<script src="template/assets/js/ace/elements.wizard.js"></script>
+		<script src="template/assets/js/ace/elements.aside.js"></script>
+		<script src="template/assets/js/ace/ace.js"></script>
+		<script src="template/assets/js/ace/ace.ajax-content.js"></script>
+		<script src="template/assets/js/ace/ace.touch-drag.js"></script>
+		<script src="template/assets/js/ace/ace.sidebar.js"></script>
+		<script src="template/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+		<script src="template/assets/js/ace/ace.submenu-hover.js"></script>
+		<script src="template/assets/js/ace/ace.widget-box.js"></script>
+		<script src="template/assets/js/ace/ace.settings.js"></script>
+		<script src="template/assets/js/ace/ace.settings-rtl.js"></script>
+		<script src="template/assets/js/ace/ace.settings-skin.js"></script>
+		<script src="template/assets/js/ace/ace.widget-on-reload.js"></script>
+		<script src="template/assets/js/ace/ace.searchbox-autocomplete.js"></script>
+		<script src="template/assets/js/clock.js"></script>
+
+		<script src="js/providersApp.js"></script>
+		<script src="js/controllers/AppCtrl.js"></script>
+		<script src="js/services/LoginService.js"></script>
+		<script src="js/services/UserService.js"></script>
+		<script src="js/services/StorageService.js"></script>
+		<script src="js/controllers/PaqueteCtrl.js"></script>
+		<script src="js/controllers/AlimentacionCtrl.js"></script>
+		<script src="js/controllers/AlojamientoCtrl.js"></script>
+		<script src="js/controllers/LoginCtrl.js"></script>
+		<script src="js/controllers/PreguntasCtrl.js"></script>
+		<script src="js/controllers/SearchCtrl.js"></script>
+		<script src="js/controllers/TransporteCtrl.js"></script>
+		<script src="js/controllers/TurismoCtrl.js"></script>
+		<script src="js/controllers/ReporteCtrl.js"></script>
+		<script src="js/controllers/MensajesCtrl.js"></script>
+		<script src="js/controllers/HeaderCtrl.js"></script>
+		<script src="js/controllers/MenuCtrl.js"></script>
+		<script src="js/controllers/FooterCtrl.js"></script>
+		<script src="js/controllers/UsuarioCtrl.js"></script>
+		<script src="js/directives/Header.js"></script>
+		<script src="js/directives/Menu.js"></script>
+		<script src="js/directives/Footer.js"></script>
+		<script src="js/directives/ValidateCharacter.js"></script>
+	</body>
+</html>

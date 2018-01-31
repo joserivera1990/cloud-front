@@ -1,0 +1,92 @@
+
+<div class="main-content">
+	<div class="page-header">
+		<h1>
+			Preguntas <small> <i
+				class="ace-icon fa fa-angle-double-right"></i>Responder Preguntas
+			</small>
+		</h1>
+	</div>
+	<div >
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+				<form class="form-horizontal" role="form" name="fpregunta"
+					novalidate ng-submit="responderPregunta(fpregunta)"
+					ng-hide="saving">
+					<!-- #section:elements.form -->
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							for="form-field-1"> Id pregunta </label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1" readonly="readonly"
+								class="col-xs-10 col-sm-5" ng-model="question.id" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							for="form-field-1"> Id Servicio </label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1" readonly="readonly"
+								class="col-xs-10 col-sm-5" ng-model="question.servicio.id" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							for="form-field-1"> Id Paquete </label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1" readonly="readonly"
+								class="col-xs-10 col-sm-5" ng-model="question.paquete.id" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							for="form-field-2">Pregunta</label>
+
+						<div class="col-sm-9">
+							<textarea id="form-field-2" readonly="readonly"
+								class="autosize-transition form-control"
+								ng-model="question.pregunta"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							for="form-field-2">Respuesta</label>
+
+						<div class="col-sm-9">
+							<textarea id="form-field-2"
+								class="autosize-transition form-control"
+								ng-model="question.respuesta"></textarea>
+						</div>
+					</div>
+
+					<div class="clearfix form-actions">
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn btn-info" type="submit">
+								<i class="ace-icon fa fa-check bigger-110"></i> Submit
+							</button>
+
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button">
+								<i class="ace-icon fa fa-undo bigger-110"></i> Reset
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- PAGE CONTENT ENDS -->
+	<!-- PAGE CONTENT ENDS -->
+</div>
+<!-- /.col -->
+

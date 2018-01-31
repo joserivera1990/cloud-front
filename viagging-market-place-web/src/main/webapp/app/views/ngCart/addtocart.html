@@ -1,0 +1,7 @@
+<a class="btn btn-default">{{attrs.price | currency}}</a>
+<span ng-show="inCart()">
+    <a class="btn btn-danger" ng-click="ngCart.removeItemById(id)"><i class="fa fa-remove"></i> Remover</a>
+</span>
+<span ng-hide="inCart()">
+	<a class="btn btn-primary" ng-click="ngCart.addItem(id, name, price, q, data)"><i class="fa fa-shopping-cart"></i> Agregar</a>
+</span>

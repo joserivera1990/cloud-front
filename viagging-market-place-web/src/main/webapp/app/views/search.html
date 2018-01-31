@@ -1,0 +1,84 @@
+<div class="container main-container">
+	<div class="row">
+		<!-- Inicio Filtros busqueda -->
+		<div class="col-lg-3 col-md-3 col-sm-12">
+			<!-- Categories -->
+			<div class="col-lg-12 col-md-12 col-sm-6" style="padding-bottom: 30px;">
+				<div class="no-padding">
+					<span style="text-transform: uppercase;" class="title">CATEGORÍAS</span>
+				</div>
+				<div id="main_menu" style="border-bottom: 1px solid #ddd;">
+					<div class="checkbox" ng-repeat="categorie in categories"
+						style="border-top: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f5f5f5; padding: 10px; margin: 0px;">
+						<label>
+						<input type="checkbox" value="{{categorie.key}}" ng-click="seleccionarCategoria(categorie.key)">
+							{{categorie.value}}
+						</label>
+					</div>
+				</div>
+			</div>
+
+<!-- 			<div class="col-lg-12 col-md-12 col-sm-6" style="padding-top: 30px;"> -->
+<!-- 				<div class="no-padding"> -->
+<!-- 					<span class="title">PRECIO</span> -->
+<!-- 				</div> -->
+<!-- 				<div id="main_menu" style="border-bottom: 1px solid #ddd;"> -->
+<!-- 					<div class="checkbox" ng-repeat="price in prices" -->
+<!-- 						style="border-top: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f5f5f5; padding: 10px; margin: 0px;"> -->
+<!-- 						<label> <input type="checkbox"> De {{price.low | currency}} <p ng-if="price.high > -1">hasta {{price.high | currency}}</p><p ng-if="price.high <= -1">en adelante.</p></label> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+
+			<!-- Final Filtros busqueda -->
+		</div>
+
+		<div class="clearfix visible-sm"></div>
+
+		<!-- Catalogue -->
+		<div class="col-lg-9 col-md-9 col-sm-12">
+			<div class="col-lg-12 col-sm-12">
+				<span class="title">Mostrando {{totalItems}} resultado(s) para "{{busqueda}}"</span>
+			</div>
+			<!-- Products -->
+			<div ng-repeat="product in filteredProducts | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" class="col-lg-6 col-sm-6 hero-feature text-center">
+				<div class="thumbnail">
+					<a ui-sref="detail({productId: product.id})" class="link-p"
+						style="overflow: hidden; position: relative;">
+						<img data-ng-src="data:image/png;base64,{{product.imagenPrincipal}}"
+							style="position: absolute; width: 571px; height: auto; max-width: none; max-height: none; left: -164px; top: 0px;">
+					</a>
+					<div class="tags">
+						<span class="label-holder"> <span class="label label-info"
+							ng-if="product.tipoProducto == 'PAQUETE'">{{product.tipoProducto}}</span>
+							<span ng-if="product.tipoProducto == 'SERVICIO'"
+							ng-repeat="servicio in product.servicios"> <span
+								class="label label-info">{{servicio.categoria}}</span>
+							</span>
+						</span>
+					</div>
+					<div class="caption prod-caption">
+						<h4>
+							<a ui-sref="detail({productId: product.id})">{{product.nombre}}</a>
+						</h4>
+						<p>
+							<div class="btn-group">
+								<ngcart-addtocart id="{{product.id}}" name="{{product.nombre}}"
+									price="{{product.precio}}" quantity="1"></ngcart-addtocart>
+							</div>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-show="noOfPages > 1">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<uib-pagination total-items="totalItems" ng-model="currentPage" max-size="noOfPages" items-per-page="entryLimit"
+						template-url="views/pagination.html" next-text="Siguiente" previous-text="Anterior" class="pagination-sm text-center">
+					</uib-pagination>
+				</div>
+			</div>
+			<!-- End Products -->
+		</div>
+		<!-- End Catalogue -->
+	</div>
+</div>

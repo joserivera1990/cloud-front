@@ -1,0 +1,36 @@
+<div class="alert alert-warning" role="alert" ng-show="conversation.mensajes.length === 0">
+    No tienes mensajes
+</div>
+
+<div class="container main-container">
+	<div class="row">
+		<div class="col-lg-12 col-sm-12">
+			<span class="title">Conversación con {{conversation.userNameWith}}</span>
+		</div>
+
+		<div class="col-xs-12 product-detail-tab" ng-repeat="message in conversation.messages">
+			<div class="media">
+				<a class="pull-left">
+					<img class="media-object thumbnail" src="../app/images/user.png" style="width: 60px; height: 60px;">
+				</a>
+				<div class="media-body">
+					<h5 class="media-heading"><strong>{{message.userName}}</strong></h5>
+					<div><i class="fa fa-clock-o"></i> {{message.date}}</div>
+					<div>{{message.message}}</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<h4>Enviar mensaje</h4>
+			<form role="form" ng-submit="sendMessage()">
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Tu mensaje" ng-model="message.mensaje" required></textarea>
+				</div>
+				<div class="text-right form-group" style="padding: 10px 0px 10px 0px;">
+					<button type="submit" class="btn btn-primary"><i class="fa fa-share"></i> Enviar mensaje</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

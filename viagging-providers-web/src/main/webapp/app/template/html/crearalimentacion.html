@@ -1,0 +1,124 @@
+<div class="main-content">
+	<div class="page-content" nv-file-drop="" uploader="uploader"
+		filters="queueLimit, customFilter">
+		<div class="page-header">
+				<h1>
+					Servicios <small> <i
+						class="ace-icon fa fa-angle-double-right"></i> Crear Alimentación
+					</small>
+				</h1>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+				<form class="form-horizontal" role="form" name="fService" novalidate
+					ng-submit="guardarAlimentacion(fService)" ng-hide="saving">
+					<!-- #section:elements.form -->
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							   for="form-field-1"> Nombre</label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1" placeholder="Nombre evento"
+								   class="col-xs-10 col-sm-5" ng-model="evento.nombre" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							   for="form-field-1">Tipo Documento</label>
+
+						<div class="col-sm-9">
+							<select name="repeatSelect" id="repeatSelect"
+									ng-model="usuario.tipoDocumento">
+								<option ng-repeat="option in tipoDocumento"
+										value="{{option.key}}">{{option.value}}</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							   for="form-field-1">Categor&iacutea</label>
+
+						<div class="col-sm-9">
+							<select name="repeatSelect" id="repeatSelect"
+									ng-model="evento.categoria">
+								<option ng-repeat="option in categoria"
+										value="{{option.key}}">{{option.value}}</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							   for="form-field-1"> Lugar </label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1"
+								   placeholder="Lugar" class="col-xs-10 col-sm-5"
+								   ng-model="evento.lugar" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							   for="form-field-1"> Direcci&oacuten </label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1" placeholder="Login"
+								   class="col-xs-10 col-sm-5" ng-model="evento.dirreccion" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							   for="form-field-2">Evento presencial</label>
+						<div class="col-sm-4">
+							<input name="form-field-checkbox" type="checkbox" class="ace"
+								   ng-model="evento.presencial" /> <span class="lbl"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							for="timepicker">Fecha Inicio</label>
+						<div class="col-sm-9 bootstrap-timepicker">
+							<input id="timepicker" type="text" class="col-xs-10 col-sm-5"
+								ng-model="evento.fechaInicio" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right"
+							for="timepicker">Fecha Fin</label>
+						<div class="col-sm-9 bootstrap-timepicker">
+							<input id="timepicker2" type="text" class="col-xs-10 col-sm-5"
+								ng-model="evento.fechaFin" />
+						</div>
+					</div>
+					<div class="clearfix form-actions">
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn btn-info" type="submit">
+								<i class="ace-icon fa fa-check bigger-110"></i> Submit
+							</button>
+
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button">
+								<i class="ace-icon fa fa-undo bigger-110"></i> Reset
+							</button>
+						</div>
+					</div>
+					<hr />
+
+				</form>
+
+				<div class="hr hr-18 dotted hr-double"></div>
+
+				<div class="hr hr-18 dotted hr-double"></div>
+			</div>
+		</div>
+	</div>
+	<!-- PAGE CONTENT ENDS -->
+</div>

@@ -1,0 +1,86 @@
+<div class="main-content">
+	<div class="page-content" >
+		<div class="page-header">
+			<h1>
+				Servicios <small> <i
+					class="ace-icon fa fa-angle-double-right"></i>Consultar Servicios
+				</small>
+			</h1>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div ng-init="getCategory()">
+					<form name="myForm">
+						<div>
+							<label for="repeatSelect"> Categoria</label> <select
+								name="repeatSelect" id="repeatSelect" ng-model="valor">
+								<option ng-repeat="option in category" value="{{option.key}}">{{option.value}}</option>
+							</select>
+							<button ng-click="getServices(valor)"
+								class="btn btn-sm btn-primary" type="button">
+								<i class="ace-icon fa fa-check bigger-110"></i> Consultar
+							</button>
+						</div>
+					</form>
+					<hr>
+					<table id="simple-table" class="table  table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="center">Detalles</th>
+								<th class="center">Nombre</th>
+								<th class="center">Precio</th>
+								<th class="hidden-480 center">Descripción Corta</th>
+								<th class="center">Estado</th>
+								<th class="center">Opciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								ng-repeat="listservices in listservices track by listservices.id">
+								<td class="center">
+									<div class="action-buttons">
+										<a href="#"
+											ng-click="especifico(listservices.id,listservices.idCategoria);"
+											class="green bigger-140 show-details-btn"
+											title="Show Details"> <i
+											class="ace-icon fa fa-angle-double-down"></i> <span
+											class="sr-only">{{ listservices.id }}</span>
+										</a>
+									</div>
+								</td>
+								<td>{{ listservices.nombre }}</td>
+								<td>{{ listservices.precio }}</td>
+								<td>{{ listservices.descripcionCorta }}</td>
+								<td ng-show="listservices.activo">ACTIVO</td>
+								<td ng-show="!listservices.activo">INACTIVO</td>
+								<td><div class="btn-group dropup">
+										<button class="btn btn-xs btn-danger">Acciones</button>
+
+										<button data-toggle="dropdown"
+											class="btn btn-xs btn-danger dropdown-toggle">
+											<span class="ace-icon fa fa-caret-down icon-only"></span>
+										</button>
+
+										<ul class="dropdown-menu dropdown-danger">
+											<li><a href="#" ng-click="eliminarServicio(listservices.id)">Eliminar</a></li>
+											<li><a href="#" ng-click="modificarServicio(listservices.id)">Modificar</a></li>
+											<li ng-show="listservices.activo"><a href="#" ng-click="activarServicio(listservices.id, false)">Inactivar</a>
+											</li>
+											<li ng-show="!listservices.activo"><a href="#" ng-click="activarServicio(listservices.id, true)">Activar</a>
+											</li>
+										</ul>
+									</div></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<a href="#" id="btn-scroll-up"
+		class="btn-scroll-up btn btn-sm btn-inverse"> <i
+		class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+	</a>
+</div>
+

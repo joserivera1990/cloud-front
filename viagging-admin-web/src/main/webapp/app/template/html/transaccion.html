@@ -1,0 +1,64 @@
+<div class="main-container" id="main-container">
+	<div class="main-content">
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Monitoreo <small> <i
+						class="ace-icon fa fa-angle-double-right"></i> Transacciones Compra
+					</small>
+				</h1>
+			</div>
+			<div>					
+					<div class="form-group col-sm-12">
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1">Desde </label>
+						<div class="col-sm-3">
+				        	<input type="text" uib-datepicker-popup ng-model="reporte.fechaInicial" is-open="statusInitial.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+				            <button type="button" ng-click="openInitial($event)">
+				            	<i class="glyphicon glyphicon-calendar"></i>
+				            </button>
+				        </div>
+				        
+				        <label class="col-sm-1" for="form-field-1">Hasta </label>
+				        <div class="col-sm-3">
+				             <input type="text"  uib-datepicker-popup ng-model="reporte.fechaFinal" is-open="statusFinal.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+				             <button type="button"  ng-click="openFinal($event)">
+				             	<i class="glyphicon glyphicon-calendar"></i>
+				             </button>
+				        </div>
+					</div>
+					<div class="form-group col-sm-7" align="right">
+						<button ng-click="generarMonitoreo()"
+							class="btn btn-sm btn-primary" type="button">
+							<i class="ace-icon fa fa-check bigger-110 "></i> Generar
+						</button>
+					</div>
+			</div>
+			<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+				<table id="simple-table" class="table  table-bordered table-hover">
+					<thead>
+						<tr>
+							<th class="center">Tipo</th>
+							<th class="center">Nombre</th>
+							<th class="center">Cantidad</th>
+							<th class="center">Fecha Venta</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="data in  listRendimiento ">
+							<td>{{ data.tipo }}</td>
+							<td>{{ data.nombre }}</td>
+							<td>{{ data.cantidad }}</td>
+							<td>{{ data.fechaVenta }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="hr hr-18 dotted hr-double"></div>
+
+			<div class="hr hr-18 dotted hr-double"></div>
+		</div>
+		</div>
+	</div>
+</div>

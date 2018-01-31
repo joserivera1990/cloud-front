@@ -1,0 +1,26 @@
+# Lists all features from the model with manual (first digit) and automatic (second digit) selection
+# 0 = deselected, 1 = selected, 2 = undefined
+21Marketplaces
+21CatalogoServicios
+21Busqueda
+21Preguntas
+21PCalificar
+12PComentario
+22Mensajeria
+21CarritoCompras
+21Transaccion
+21Publicacion
+12PFacebook
+22PTwitter
+21Autenticacion
+11Facebook
+22Twitter
+21Portal
+22Reportes
+22DeCompras
+22DeBusquedas
+22DeConsultas
+22Clima
+22Temperatura
+22EstadoClima
+21AdministracionMP

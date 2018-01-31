@@ -1,0 +1,179 @@
+<div ng-init="getProfile()" class="main-content">
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+			<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> N&uacutemero de Identificaci&oacuten</label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1"
+							class="col-xs-10 col-sm-5" ng-model="usuario.numeroIdentificacion" />
+					</div>
+					<div class="col-md-offset-3 col-md-9">
+							<button ng-click="getUser(usuario.numeroIdentificacion)"
+								class="btn btn-sm btn-primary" type="button">
+								<i class="ace-icon fa fa-check bigger-110"></i> Consultar
+							</button>
+						</div>
+				</div>
+			<hr>
+			<hr>
+			<form class="form-horizontal" role="form" name="fService" novalidate
+				ng-submit="updateUser()" ng-hide="saving">
+				<!-- #section:elements.form -->
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Primer Nombre </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="Primer Nombre"
+							class="col-xs-10 col-sm-5" ng-model="usuario.primerNombre" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Segundo Nombre </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="Segundo Nombre"
+							class="col-xs-10 col-sm-5" ng-model="usuario.segundoNombre" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Primer Apellido </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="Primer Apellido"
+							class="col-xs-10 col-sm-5" ng-model="usuario.primerApellido" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Segundo Apellido </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1"
+							placeholder="Segundo Apellido" class="col-xs-10 col-sm-5"
+							ng-model="usuario.segundoApellido" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1">Tipo Documento</label>
+
+					<div class="col-sm-9">
+						<select name="repeatSelect" id="repeatSelect"
+							ng-model="usuario.tipoDocumento">
+							<option ng-repeat="option in tipoDocumento"
+								value="{{option.key}}">{{option.value}}</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Numero Documento </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1"
+							placeholder="Numero Documento" class="col-xs-10 col-sm-5"
+							ng-model="usuario.numeroDocumento" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Login </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="Login"
+							class="col-xs-10 col-sm-5" ng-model="usuario.login" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Correo </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="Correo"
+							class="col-xs-10 col-sm-5" ng-model="usuario.correo" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> N&uacutemero de Celular </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="Numero Celular"
+							class="col-xs-10 col-sm-5" ng-model="usuario.numeroCelular" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1">Direcci&oacuten 1</label>
+
+					<div class="col-sm-9">
+						<input id="form-field-2" placeholder="Direccion"
+							class="autosize-transition form-control"
+							ng-model="usuario.direccion1"></input>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1">Pais</label>
+
+					<div class="col-sm-9">
+						<input id="form-field-2" placeholder="Pais"
+							class="autosize-transition form-control" ng-model="usuario.pais"></input>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Ciudad </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="Ciudad"
+							class="col-xs-10 col-sm-5" ng-model="usuario.ciudad" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right"
+						for="form-field-1"> Perfil </label>
+					<div class="col-sm-9">
+						<select name="repeatSelect" id="repeatSelect"
+							ng-model="usuario.perfil.id">
+							<option ng-repeat="option in profile" value="{{option.key}}">{{option.value}}</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-3 col-md-9">
+						<button class="btn btn-info" type="submit">
+							<i class="ace-icon fa fa-check bigger-110"></i> Actualizar
+						</button>
+
+						&nbsp; &nbsp; &nbsp;
+						<button class="btn" type="button" ng-click="cancel()">
+							<i class="ace-icon fa fa-undo bigger-110"></i> Reset
+						</button>
+					</div>
+				</div>
+				<hr/>
+			</form>
+			<div class="hr hr-18 dotted hr-double"></div>
+			<div class="hr hr-18 dotted hr-double"></div>
+		</div>
+	</div>
+</div>
+<!-- PAGE CONTENT ENDS -->

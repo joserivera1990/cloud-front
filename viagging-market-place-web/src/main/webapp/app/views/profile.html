@@ -1,0 +1,147 @@
+<div class="container main-container">
+	<div class="row">
+		<div class="col-lg-12 col-sm-12">
+			<span class="title">PERFIL</span>
+		</div>
+
+		<div class="col-xs-12 product-detail-tab">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" ng-init="selectedTab='GENERAL'">
+				<li class="active"><a data-toggle="tab"
+					ng-click="selectedTab='GENERAL'">Datos Generales</a></li>
+				<li><a data-toggle="tab" ng-click="selectedTab='ADDRESS'">Dirección</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane" ng-class="{'active':selectedTab==='GENERAL'}">
+					<div class="well">
+						<div class="media">
+							<div class="col-lg-2 col-md-2 col-sm-12">
+								<!-- Profile picture -->
+								<div class="profile-picture">
+									<img class="img-responsive" src="../app/images/user.png" />
+								</div>
+								<!-- End Profile picture -->
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-12">
+								<div class="table-responsive" style="border: 0">
+									<form role="form" ng-submit="updateUser()">
+										<table class="table table-bordered tbl-checkout">
+											<tbody>
+												<tr>
+													<td>Primer Nombre (*)</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.primerNombre" required /></td>
+													<td>Segundo Nombre</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.segundoNombre" /></td>
+												</tr>
+												<tr>
+													<td>Primer Apellido (*)</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.primerApellido" required /></td>
+													<td>Segundo Apellido</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.segundoApellido" /></td>
+												</tr>
+												<tr>
+													<td>Email (*)</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.correo" required /></td>
+													<td>Celular (*)</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.numeroCelular" required /></td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="btn-group btns-cart pull-right">
+											<button type="submit" class="btn btn-primary">
+												<i class="fa fa-save"></i> Actualizar
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" ng-class="{'active':selectedTab==='ADDRESS'}">
+					<div class="well">
+						<div class="media">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="table-responsive" style="border: 0">
+									<form role="form" ng-submit="updateUserAddress()">
+										<table class="table table-bordered tbl-checkout">
+											<tbody>
+												<tr>
+													<td>Dirección 1 (*)</td>
+													<td>
+														<input type="text" name="" class="form-control"
+															ng-model="userData.direccion1" required /></td>
+													<td>Dirección 2</td>
+													<td>
+														<input type="text" name="" class="form-control"
+															ng-model="userData.direccion2" />
+													</td>
+												</tr>
+												<tr>
+													<td>Ciudad (*)</td>
+													<td>
+														<input type="text" name="" class="form-control"
+															ng-model="userData.ciudad" required/>
+													</td>
+													<td>País (*)</td>
+													<td>
+														<select class="form-control" ng-model="userData.pais" required>
+															<option value="">--- Seleccione País ---</option>
+															<option value="Argentina">Argentina</option>
+															<option value="Bolivia">Bolivia</option>
+															<option value="Brasil">Brasil</option>
+															<option value="Chile">Chile</option>
+															<option value="Colombia">Colombia</option>
+															<option value="Ecuador">Ecuador</option>
+															<option value="Mexico">Mexico</option>
+															<option value="Panama">Panama</option>
+															<option value="Paraguay">Paraguay</option>
+															<option value="Peru">Peru</option>
+															<option value="Estados Unidos">Estados Unidos</option>
+															<option value="Uruguay">Uruguay</option>
+															<option value="Venezuela">Venezuela</option>
+														</select>
+													</td>
+												</tr>
+												<tr>
+													<td>Estado (*)</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.estado" required /></td>
+													<td>Código Postal (*)</td>
+													<td><input type="text" name="" class="form-control"
+														ng-model="userData.zipcode" required /></td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="btn-group btns-cart pull-right">
+											<button type="submit" class="btn btn-primary">
+												<i class="fa fa-save"></i> Actualizar
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="clearfix visible-sm"></div>
+
+		<!-- Cart -->
+
+	</div>
+	<!-- End Cart -->
+</div>
+</div>
