@@ -35,9 +35,10 @@ providersApp.controller('AlojamientoCtrl', ['$scope', 'userService', 'FileUpload
 	});
 
 	$scope.guardarAlojamiento = function(falojamiento) {
+	    alert("here");
 		var idService;
 		
-		var caracteristicas = [];
+		/*var caracteristicas = [];
 		for(valorCaracteristica in $scope.selection){
 			var caracteristica = {
 				valor: valorCaracteristica
@@ -45,9 +46,11 @@ providersApp.controller('AlojamientoCtrl', ['$scope', 'userService', 'FileUpload
 			caracteristicas.push(caracteristica);
 		}
 		$scope.alojamiento.servicio.caracteristicas = caracteristicas;
-		$scope.alojamiento.servicio.usuario.id=$scope.userData.id;
-		console.log($scope.alojamiento);
-		$http.post('/viagging-providers-web/saveLodging', angular.toJson($scope.alojamiento), {
+		*/
+
+		//$scope.alojamiento.servicio.usuario.id=$scope.userData.id;
+		console.log($scope.evento);
+		$http.post('http://localhost:8090/api/events', angular.toJson($scope.evento), {
 			headers: {"Content-Type": "application/json"},
 			transformRequest: angular.identity
 		}).success(function(data, status, headers, config) {

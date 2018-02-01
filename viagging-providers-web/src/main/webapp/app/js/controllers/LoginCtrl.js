@@ -3,32 +3,30 @@ providersApp.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'loginSe
 	$rootScope.showReport = false;
 	$rootScope.showMessage = false;
 	$scope.userData = {
-			id: "",
-			login: "",
-			password: "",
-			correo: "",
-			primerApellido: "",
-			primerNombre: "",
+        idUser: "",
+        name: "",
+        lastName: "",
+        email: "",
+        password: "",
+        registerDate: "",
 	}
 	
 	'use strict';
 	
 	$scope.userLogin = {
-		login: "",
+        email: "text",
 		password: "",
 		profile:"Proveedor"
 	};
 	
 	var successCallback = function(map){
-		$scope.userData = map["usuario"];
+		$scope.userData = map;
 		alert("Bienvenido de nuevo " + $scope.userData.name + " " + $scope.userData.lastName);
-		//console.log(map["derivadorReportes"]);
-		//console.log(map["derivadorMensajes"]);
 		//$rootScope.showReport = map["derivadorReportes"];
 		//$rootScope.showMessage = map["derivadorMensajes"];
 		$rootScope.$broadcast('USER_LOGGED_IN', $scope.userData);
         $rootScope.$broadcast('USER_LOGGED_IN', "$scope.userData");
-		$state.go("alimentacion");
+		$state.go("alojamiento");
 	};
 	
 	var errorCallback = function(){
