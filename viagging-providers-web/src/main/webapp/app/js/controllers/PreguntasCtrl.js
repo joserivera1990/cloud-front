@@ -1,25 +1,31 @@
-providersApp.controller('PreguntasCtrl', ['$scope', '$http', '$rootScope', '$state', function($scope, $http, $rootScope, $state) {
+providersApp.controller('PreguntasCtrl', ['$scope', 'userService', '$http', '$rootScope', '$state', function($scope,userService, $http, $rootScope, $state) {
 
 	$scope.question;
 	$scope.id;
+    $scope.ocultarSeccionActualizarPaquete = true;
+
 	
 	$scope.$watch("ajaxURL", function (newValue, oldValue) {
-		$http.get('/viagging-providers-web/getQuestions').
+        userData = userService.getUserData();
+        idUser = userData.idUser;
+		$http.get('http://localhost:8090/api/events/user/'+idUser).
 		success(function(data, status, headers, config) {
-			console.log("caracteristicas" + data);
-			$scope.questions = data;
+			$scope.events = data;
 		}).
 		error(function(data, status, headers, config) {
 		});
 	});
-	
-	$scope.getPregunta = function(idPregunta) { 
-		for (var i = 0; i < $scope.questions.length; i++) {
-			if ($scope.questions[i].id == idPregunta) {
-				$rootScope.question = $scope.questions[i];
-				$scope.id = $scope.question.id;
-			}
-		}
+
+    $scope.getEvent = function(idEvento) {
+        $http.get('http://localhost:8090/api/events/'+idEvento).
+        success(function(data, status, headers, config) {
+            $scope.event = data;
+            console.log("here");
+            console.log($scope.event);
+            $scope.ocultarSeccionActualizarPaquete = false;
+        }).
+        error(function(data, status, headers, config) {
+        });
     }
 	
 	$scope.responderPregunta = function(fpregunta) { 

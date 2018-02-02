@@ -1,30 +1,21 @@
 providersApp.controller('AlojamientoCtrl', ['$scope', 'userService', 'FileUploader', '$http', function($scope, userService, FileUploader, $http) {
 
-	$scope.alojamiento = {
-			servicio:{ 
-				id: 0,
-				nombre: "",
-				descripcionCorta: "",
-				activo: true,
-				restricciones: "",
-				caracteristicas: "",
-				precio: "",
-				fechaInicial: "",
-				fechaFinal: "",
-				capacidad: "",
-				usuario: {
-					id: ""
-				}
-			},	
-			ciudad: "",
-			tipo: "",
-			numeroPersonas: ""
-	}
+    $scope.evento = {
+        idEvent: 0,
+        idUser: 0,
+        name: "",
+        category: "",
+        place: "",
+        address: "",
+        initialDate: "",
+        finalDate: "",
+        isPresencial : false
+    };
 
 	$scope.caracteristicas = [];
 	$scope.selection = {};
 
-	$scope.$watch("ajaxURL", function (newValue, oldValue) {
+	/*$scope.$watch("ajaxURL", function (newValue, oldValue) {
 		$http.get('/viagging-providers-web/getFeatures?categoria=ALOJAMIENTO').
 		success(function(data, status, headers, config) {
 			$scope.caracteristicas = data;
@@ -32,63 +23,39 @@ providersApp.controller('AlojamientoCtrl', ['$scope', 'userService', 'FileUpload
 		}).
 		error(function(data, status, headers, config) {
 		});
-	});
+	});*/
 
-	$scope.guardarAlojamiento = function(falojamiento) {
-	    alert("here");
-		var idService;
-		
-		/*var caracteristicas = [];
-		for(valorCaracteristica in $scope.selection){
-			var caracteristica = {
-				valor: valorCaracteristica
-			};
-			caracteristicas.push(caracteristica);
-		}
-		$scope.alojamiento.servicio.caracteristicas = caracteristicas;
-		*/
-
-		//$scope.alojamiento.servicio.usuario.id=$scope.userData.id;
+	$scope.guardarEvento = function(fevento) {
+        userData = userService.getUserData();
+        console.log("userService.getUserData()");
+        console.log(userService.getUserData());
+        console.log(userData.idUser);
+        $scope.evento.idUser = userData.idUser;
+        $scope.evento.idEvent = 123
 		console.log($scope.evento);
 		$http.post('http://localhost:8090/api/events', angular.toJson($scope.evento), {
 			headers: {"Content-Type": "application/json"},
 			transformRequest: angular.identity
 		}).success(function(data, status, headers, config) {
-			idService = data;
-			for (var i = 0; i < uploader.queue.length; i++) {
-				$http.put('/viagging-providers-web/saveImage', uploader.queue[i]._file, {
-					params: { idServicio : idService },
-	    			headers: {"Content-Type": "application/json"},
-	    			transformRequest: angular.identity}
-	    		)
-	    		.success(function(response) {
-	    			console.log('success', response);
-	    		})
-	    		.error(function(response) {
-	    			console.log('error', response);
-	    		});
-			}
+            alert("El evento fue creado!");
 			reset();
-			alert("El servicio fue creado!");
 		}).error(function(data, status, headers, config) {
 			alert("Error en la creación");
 		}); 
-	} 
-	
+	}
+
 	function reset() {
-		$scope.alojamiento = {
-				servicio:{ 
-					id: 0,
-					nombre: "",
-					descripcionCorta: "",
-					activo: true,
-					restricciones: "",
-					caracteristicas: "",
-					precio: ""
-				},	
-				ciudad: ""
+		$scope.evento = {
+            	idEvent: 0,
+                idUser: 0,
+                name: "",
+                category: "",
+                place: "",
+                address: "",
+                initialDate: "",
+            	finalDate: "",
+			    isPresencial : false
 		};
-		$scope.selection = {};
 		uploader.queue = [];
 	}
 	

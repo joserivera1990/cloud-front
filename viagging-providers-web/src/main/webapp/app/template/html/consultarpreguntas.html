@@ -6,8 +6,8 @@
 		<div class="page-content">
 			<div class="page-header">
 				<h1>
-					Preguntas <small> <i
-						class="ace-icon fa fa-angle-double-right"></i>Consultar Preguntas
+					Eventos <small> <i
+						class="ace-icon fa fa-angle-double-right"></i>Consultar Eventos
 					</small>
 				</h1>
 			</div>
@@ -21,32 +21,115 @@
 									class="table  table-bordered table-hover">
 									<thead>
 										<tr>
-											<th class="center">Id Pregunta</th>
-											<th class="center">Id Usuario</th>
-											<th class="center">Id Servicio</th>
-											<th class="center">Id Paquete</th>
-											<th class="center">Pregunta</th>
-											<th class="center">Respuesta</th>
-											<th class="center">Opciones</th>
+											<th class="center">Nombre</th>
+											<th class="center">Categoria</th>
+											<th class="center">Lugar</th>
+											<th class="center">Detalle</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="question in questions track by question.id">
-											<td>{{ question.id }}</td>
-											<td>{{ question.usuario.id }}</td>
-											<td>{{ question.servicio.id }}</td>
-											<td>{{ question.paquete.id }}</td>
-											<td>{{ question.pregunta }}</td>
-											<td>{{ question.respuesta }}</td>
-											<td><a ng-click="getPregunta(question.id);"
+										<tr ng-repeat="event in events track by $index">
+											<td>{{ event.name }}</td>
+											<td>{{ event.category }}</td>
+											<td>{{ event.place }}</td>
+											<!--td><a ng-click="getPregunta(event.idEvent);"
 												ui-sref="responderpregunta"
-												ng-show="question.respuesta == null"
+												ng-show="event.idEvent == null"
 												class="btn btn-danger btn-sm"> <i
-													class="ace-icon fa fa-reply icon-only"></i></a></td>
+													class="ace-icon fa fa-reply icon-only"></i></a>
+											</td-->
+											<td class="center">
+												<div class="action-buttons">
+													<a href="#" ng-click="getEvent(event.idEvent);"
+													   class="green bigger-140 show-details-btn"
+													   title="Show Details"> <i
+															class="ace-icon fa fa-angle-double-down"></i> <span
+															class="sr-only">{{ event.idEvent }}</span>
+													</a>
+												</div>
+											</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
+						</div>
+						<div ng-hide="ocultarSeccionActualizarPaquete" class="ng-hide" class="page-header">
+							<h1>
+								<small> <i class="ace-icon fa fa-angle-double-right"></i>Detalles
+								</small>
+							</h1>
+						</div>
+						<div ng-hide="ocultarSeccionActualizarPaquete" class="ng-hide" class="row">
+							<form name="userForm" ng-submit="updateEvent()" novalidate>
+								<div  >
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											   for="form-field-1"> Nombre </label>
+
+										<div class="col-sm-9">
+											<input  ng-model="event.name" required ng-max="20" readonly
+													type="text" id="form-field-1" placeholder="Nombre"
+													class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											   for="form-field-1"> Categoría </label>
+										<div class="col-sm-9">
+											<input  ng-model="event.category" required readonly
+													type="text" id="form-field-1" placeholder="categoria"
+													class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											   for="form-field-1"> Lugar </label>
+
+										<div class="col-sm-9">
+											<input required required ng-max="10" readonly
+												   ng-model="event.place" type="text" id="form-field-1"
+												   placeholder="Precio" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											   for="form-field-1"> Dirección </label>
+
+										<div class="col-sm-9">
+											<input required required ng-max="100" readonly
+												   ng-model="event.address" type="text" id="form-field-1"
+												   placeholder="Dirección" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											   for="form-field-1"> Fecha Inicio </label>
+
+										<div class="col-sm-9 bootstrap-timepicker">
+											<input required numbers-only required ng-max="100" readonly
+												   ng-model="event.initialDate" type="text" id="form-field-1"
+												   placeholder="Fecha Inicio" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											   for="timepicker">Fecha Fin</label>
+										<div class="col-sm-9 bootstrap-timepicker">
+											<input id="timepicker2" required type="text" class="col-xs-10 col-sm-5"
+												   readonly ng-model="event.finalDate" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											   for="form-field-2">Evento presencial</label>
+										<div class="col-sm-4">
+											<input name="form-field-checkbox" required type="checkbox" class="ace"
+												   readonly ng-model="event.isPresencial" /> <span class="lbl"></span>
+										</div>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>

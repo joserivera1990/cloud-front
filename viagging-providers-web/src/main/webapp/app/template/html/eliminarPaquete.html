@@ -12,14 +12,14 @@
 					<div class="page-header">
 						<h1>
 							Paquetes <small> <i
-								class="ace-icon fa fa-angle-double-right"></i>Eliminar Paquetes
+								class="ace-icon fa fa-angle-double-right"></i>Eliminar Eventos
 							</small>
 						</h1>
 					</div>
 					
 					<!-- /.page-header -->
 <!-- 					<div ng-app="providersapp" ng-controller="samplecontroller" ng-init="getCategory()" > -->
-					<div ng-app="providersapp" ng-controller="samplecontroller" ng-init="getPackages('')" >
+					<div ng-app="providersapp" ng-controller="samplecontroller" ng-init="getPackages('')">
 					
 					<div>
 				   <hr>					
@@ -34,12 +34,30 @@
 											<thead>
 												<tr>
 													<th class="center">Nombre</th>
-													<th class="center">Precio</th>
-													<th class="hidden-480 center">Descripción Corta</th>
+													<th class="center">Categoria</th>
+													<th class="hidden-480 center">Lugar</th>
                                                     <th class="center">Eliminar</th>
 												</tr>
 											</thead>
+
 											<tbody>
+												<tr ng-repeat="event in events track by $index">
+													<td>{{ event.name }}</td>
+													<td>{{ event.category }}</td>
+													<td>{{ event.place }}</td>
+													<td class="center">
+														<div class="action-buttons">
+															<a href="#" ng-click="eliminatePackage(event.idEvent);"
+															   class="green bigger-140 show-details-btn"
+															   title="Show Details"> <i
+																	class="ace-icon fa fa-angle-double-down"></i> <span
+																	class="sr-only">{{ event.idEvent }}</span>
+															</a>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+											<!--tbody>
 												<tr ng-repeat="listPackages in listPackages track by listPackages.id">
                                                      <td>{{ listPackages.nombre }}</td>												
 													<td class="center">{{ listPackages.precio }}</td>
@@ -48,7 +66,7 @@
 																<button ng-click="eliminatePackage(listPackages.id);"  class="btn btn-xs btn-danger">Eliminar</button>
 																</div></td>
 												</tr>
-											</tbody>
+											</tbody-->
 										</table>
 									</div>
 								</div>

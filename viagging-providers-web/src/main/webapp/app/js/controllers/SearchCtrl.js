@@ -209,7 +209,9 @@ providersApp.controller('SearchCtrl', ['$scope', '$http','ngDialog','$rootScope'
 
 
 	$scope.getPackage = function(idPaquete) { 
-		$http.get('/viagging-providers-web/getPackage',{
+		alert(idPaquete);
+
+		/*$http.get('/viagging-providers-web/getPackage',{
 			params: { idPackage: idPaquete }
 		}).
 		success(function(data, status, headers, config) {
@@ -220,7 +222,7 @@ providersApp.controller('SearchCtrl', ['$scope', '$http','ngDialog','$rootScope'
 		error(function(data, status, headers, config) {
 
 		}); 
-		console.log('despues de llamar Packages');
+		console.log('despues de llamar Packages');*/
 	}
 	
 	$scope.activarServicio = function(idServicio,estado) { 

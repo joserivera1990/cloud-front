@@ -1,4 +1,4 @@
-providersApp.controller('samplecontroller', ['$scope', '$http','ngDialog','$rootScope','$sce', function($scope, $http,ngDialog, $rootScope,$sce) {
+providersApp.controller('samplecontroller', ['$scope', 'userService', '$http','ngDialog','$rootScope','$sce', function($scope, userService, $http,ngDialog, $rootScope,$sce) {
 $scope.idEspecifico = '1';
 $scope.name;
 $scope.lastName;
@@ -19,6 +19,19 @@ $scope.paquete = {
 			id: ""
 		}
 }
+
+    $scope.$watch("ajaxURL", function (newValue, oldValue) {
+        userData = userService.getUserData();
+        idUser = userData.idUser;
+        $http.get('http://localhost:8090/api/events/user/'+idUser).
+        success(function(data, status, headers, config) {
+            $scope.events = data;
+        }).
+        error(function(data, status, headers, config) {
+        });
+    });
+
+
 $scope.reporte = {
 		tipo: "QUERY",
 		fechaInical: "2015-01-08",
@@ -209,50 +222,32 @@ $scope.reporte = {
   	    }
   	 }
      
-	   $scope.getPackages = function(filtro) { 
-		   console.log("filtro"+filtro);
-		   console.log("idUsuario"+$scope.userData.id);
-			 $http.get('/viagging-providers-web/getPackages',{
-			    	params: { filtro: filtro, idUsuario : $scope.userData.id }
-			    }).success(function(data, status, headers, config) {
-			    	console.log(status);
-			      $scope.listPackages = data;
-			      console.log(data);
-			    }).
-			    error(function(data, status, headers, config) {
-			    	console.log(data);
-			    	console.log(status);
-			    	$scope.listPackages = [];
-			    }); 
-			    console.log('despues de llamar Packages');
+	   $scope.getPackages = function(filtro) {
+	alert("getPackages")
+           userData = userService.getUserData();
+           idUser = userData.idUser;
+           $http.get('http://localhost:8090/api/events/user/'+idUser).
+           success(function(data, status, headers, config) {
+               $scope.events = data;
+               alert("j");
+               console.info($scope.events);
+           }).
+           error(function(data, status, headers, config) {
+           });
 	     }
 	   
 
-	   $scope.getPackage = function(idPaquete) {
-		   
-		   for (var i=0;i<$scope.listPackages.length;i++){
- 	    	  if($scope.listPackages[i].id == idPaquete){
- 	    		 $scope.paquete.nombre = $scope.listPackages[i].nombre;
- 	    		 $scope.paquete.descripcion = $scope.listPackages[i].descripcion;
- 	    		 $scope.paquete.precio = $scope.listPackages[i].precio;
- 	    		 $scope.paquete.id = $scope.listPackages[i].id;
- 	    		  break;
- 	    	  }	    	    	  
- 	      }
-			 $http.get('/viagging-providers-web/getPackage',{
-			    	params: { idPackage: idPaquete }
-			    }).
-			    success(function(data, status, headers, config) {
-			    	console.log(status);
-			      $scope.listaServicios = data;
-			      console.log(data);
-			      $scope.ocultarSeccionActualizarPaquete = false;
-			      console.log($scope.ocultarSeccionActualizarPaquete);
-			    }).
-			    error(function(data, status, headers, config) {
-
-			    }); 
-			    console.log('despues de llamar Packages');
+	   $scope.getEvent = function(idEvento) {
+		   alert(idEvento);
+           $http.get('http://localhost:8090/api/events/'+idEvento).
+           success(function(data, status, headers, config) {
+               $scope.event = data;
+               console.log("here");
+               console.log($scope.event);
+               $scope.ocultarSeccionActualizarPaquete = false;
+           }).
+           error(function(data, status, headers, config) {
+           });
 	     }
 	   
 	   $scope.login = function() { 
@@ -292,61 +287,38 @@ $scope.reporte = {
             });
 	     }
 	   
-	   $scope.eliminatePackage = function(idPaquete) { 
-		   console.log("idPaquete"+idPaquete)
-		   $http({ url: '/viagging-providers-web/deletePackage', 
-               method: 'DELETE', 
-               data: idPaquete, 
+	   $scope.eliminatePackage = function(idEvent) {
+		   $http({ url: 'http://localhost:8090/api/events/'+idEvent,
+               method: 'DELETE',
                headers: {"Content-Type": "application/json;charset=utf-8"}
 	       }).then(function(res) {
 	    	   console.log(res); 
-	    	   for (var i=0;i<$scope.listPackages.length;i++){
-	    	    	  if($scope.listPackages[i].id == idPaquete){
-	    	    		  $scope.listPackages.splice(i, 1);	
+	    	   for (var i=0;i<$scope.events.length;i++){
+	    	    	  if($scope.events[i].idEvent == idEvent){
+	    	    		  $scope.events.splice(i, 1);
 	    	    		  break;
 	    	    	  }	    	    	  
 	    	      }
-	    	      alert("Transacción exitosa");
+	    	      alert("Eliminación exitosa");
 	       }, function(error) {
 	    	   alert("Error al eliminar");
 	       });
 		   
 	     }
-	   
-		$scope.updatePackage = function() { 
-			console.log($scope.paquete);
-			console.log("idUsuario"+$scope.userData.id);
-			$scope.paquete.usuario.id = $scope.userData.id;
-			if($scope.paquete.precio > 2147483647){
-				alert("Precio debe ser menor a 2147483648");
-			}else{
-			
-				$scope.paquete.servicios = $scope.chooseservices;
-				 $http.put('/viagging-providers-web/editPackage',$scope.paquete).
-					success(function(data, status, headers, config) {
-				    	console.log(status);
-				    	console.log(data);
-				    	alert("Paquete actualizado");
 
-				    	 for (var i=0;i<$scope.listPackages.length;i++){
-				 	    	  if($scope.listPackages[i].id == $scope.paquete.id){
-							    	$scope.listPackages[i].nombre = $scope.paquete.nombre;
-							    	$scope.listPackages[i].descripcion = $scope.paquete.descripcion;
-							    	$scope.listPackages[i].precio = $scope.paquete.precio;
-							    	console.log($rootScope.respuestaCreacion);
-							    	$scope.paquete.precio = "";
-							    	$scope.paquete.nombre = "";
-							    	$scope.paquete.descripcion = "";
-							    	break;
-				 	         }
-				 	   }
-				    	 $scope.ocultarSeccionActualizarPaquete = true;
-		        }).
-		          error(function(data, status, headers, config) {
-		        	  alert("Error al actualizar paquete");
-		        }); 
-			}
-	    	 
+		$scope.updateEvent = function() {
+			console.log($scope.event);
+			console.log("idUsuario"+$scope.event.idUser);
+			 $http.put('http://localhost:8090/api/events',$scope.event).
+				success(function(data, status, headers, config) {
+					console.log(status);
+					console.log(data);
+					alert("Evento actualizado");
+					 $scope.ocultarSeccionActualizarPaquete = true;
+			}).
+			  error(function(data, status, headers, config) {
+				  alert("Error al actualizar evento");
+			});
 		}
 		
 		

@@ -4,31 +4,12 @@
 		<div class="page-content">
 			<div class="page-header">
 				<h1>
-					Paquetes <small> <i
-						class="ace-icon fa fa-angle-double-right"></i>Actualizar Paquetes
+					Eventos <small> <i
+						class="ace-icon fa fa-angle-double-right"></i>Actualizar Eventos
 					</small>
 				</h1>
 			</div>
 			<div>
-				<form name="myForm">
-					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right"
-							for="form-field-1">Filtrar por Nombre </label>
-
-						<div class="col-sm-9">
-							<input ng-model="filtrarnombre" type="text" id="form-field-1"
-								placeholder="Nombre" class="col-xs-10 col-sm-5" />
-						</div>
-					</div>
-					<div class="col-md-offset-3 col-md-9">
-						<button ng-click="getPackages(filtrarnombre)"
-							class="btn btn-sm btn-primary" type="button">
-							<i class="ace-icon fa fa-check bigger-110"></i> Consultar
-						</button>
-					</div>
-				</form>
-				<hr>
-				<hr>
 				<div class="row">
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
@@ -39,29 +20,26 @@
 									<thead>
 										<tr>
 											<th class="center">Nombre</th>
-											<th class="center">Descripcion</th>
-											<th class="center">Servicios</th>
-											<th class="center">Precio</th>
+											<th class="center">Categoría</th>
+											<th class="center">Lugar</th>
+											<th class="center">Editar</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr
-											ng-repeat="listPackages in listPackages track by listPackages.id">
-											<td>{{ listPackages.nombre }}</td>
-											<td>{{ listPackages.descripcion }}</td>
+										<tr ng-repeat="event in events track by $index">
+											<td>{{ event.name }}</td>
+											<td>{{ event.category }}</td>
+											<td>{{ event.place }}</td>
 											<td class="center">
 												<div class="action-buttons">
-													<a href="#" ng-click="getPackage(listPackages.id);"
-														class="green bigger-140 show-details-btn"
-														title="Show Details"> <i
-														class="ace-icon fa fa-angle-double-down"></i> <span
-														class="sr-only">{{ listPackages.id }}</span>
+													<a href="#" ng-click="getEvent(event.idEvent);"
+													   class="green bigger-140 show-details-btn"
+													   title="Show Details"> <i
+															class="ace-icon fa fa-angle-double-down"></i> <span
+															class="sr-only">{{ event.idEvent }}</span>
 													</a>
 												</div>
 											</td>
-
-
-											<td>{{ listPackages.precio }}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -76,85 +54,78 @@
 					</h1>
 				</div>
 				<div ng-hide="ocultarSeccionActualizarPaquete" class="ng-hide" class="row">
-					<div class="col-xs-12">
-						<!-- PAGE CONTENT BEGINS -->
-						<div class="row">
-							<div class="col-xs-12">
-								<table id="simple-table"
-									class="table  table-bordered table-hover">
-									<thead>
-										<tr>
-											<th class="center">Categoria</th>
-											<th class="center">Nombre</th>
-											<th class="center">Detalles</th>
-											<th class="center">Precio</th>
-											<th class="hidden-480 center">Descripción Corta</th>
-											<th class="center">Ciudad</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr ng-repeat="listaServicios in listaServicios">
-											<td>{{ listaServicios.paquete.nombre }}</td>
-											<td>{{ listaServicios.nombre }}</td>
-											<td class="center">
-												<div class="action-buttons">
-													<a href="#"
-														ng-click="especifico(listaServicios.id,listaServicios.idCategoria);"
-														class="green bigger-140 show-details-btn"
-														title="Show Details"> <i
-														class="ace-icon fa fa-angle-double-down"></i> <span
-														class="sr-only">{{ listaServicios.id }}</span>
-													</a>
-												</div>
-											</td>
-
-
-											<td>{{ listaServicios.precio }}</td>
-											<td>{{ listaServicios.descripcionCorta }}</td>
-											<td>{{ listaServicios.ciudad }}</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				<form name="userForm" ng-submit="updatePackage()" novalidate>
+				<form name="userForm" ng-submit="updateEvent()" novalidate>
 						<div  >
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right"
 									for="form-field-1"> Nombre </label>
 
 								<div class="col-sm-9">
-									<input  ng-model="paquete.nombre" required
+									<input  ng-model="event.name" required ng-max="20"
 										type="text" id="form-field-1" placeholder="Nombre"
 										class="col-xs-10 col-sm-5" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right"
-									for="form-field-1"> Descripción </label>
+									for="form-field-1"> Categoría </label>
 								<div class="col-sm-9">
-									<input  ng-model="paquete.descripcion" required
-										type="text" id="form-field-1" placeholder="descripcion"
+									<input  ng-model="event.category" required
+										type="text" id="form-field-1" placeholder="categoria"
 										class="col-xs-10 col-sm-5" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right"
-									for="form-field-1"> Precio </label>
+									for="form-field-1"> Lugar </label>
 
 								<div class="col-sm-9">
-									<input required numbers-only required ng-max="15"
-										ng-model="paquete.precio" type="text" id="form-field-1"
+									<input required required ng-max="10"
+										ng-model="event.place" type="text" id="form-field-1"
 										placeholder="Precio" class="col-xs-10 col-sm-5" />
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									   for="form-field-1"> Dirección </label>
 
+								<div class="col-sm-9">
+									<input required required ng-max="100"
+										   ng-model="event.address" type="text" id="form-field-1"
+										   placeholder="Dirección" class="col-xs-10 col-sm-5" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									   for="form-field-1"> Fecha Inicio </label>
 
+								<div class="col-sm-9 bootstrap-timepicker">
+									<input required numbers-only required ng-max="100"
+										   ng-model="event.initialDate" type="text" id="form-field-1"
+										   placeholder="Fecha Inicio" class="col-xs-10 col-sm-5" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									   for="timepicker">Fecha Fin</label>
+								<div class="col-sm-9 bootstrap-timepicker">
+									<input id="timepicker2" required type="text" class="col-xs-10 col-sm-5"
+										   ng-model="event.finalDate" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									   for="form-field-2">Evento presencial</label>
+								<div class="col-sm-4">
+									<input name="form-field-checkbox" required type="checkbox" class="ace"
+										   ng-model="event.isPresencial" /> <span class="lbl"></span>
+								</div>
+							</div>
 							<div class="col-md-offset-3 col-md-9">
 								<button type="submit" ng-disabled="userForm.$invalid"
 									class="btn btn-sm btn-primary" type="button">
-									<i class="ace-icon fa fa-check bigger-110"></i> Actualizar paquete
+									<i class="ace-icon fa fa-check bigger-110"></i> Actualizar Evento
 								</button>
 							</div>
 						</div>
