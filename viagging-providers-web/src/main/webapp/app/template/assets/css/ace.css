@@ -22,6 +22,38 @@ body {
   top: 0;
   background-color: #FFF;
 }
+.wrapper {
+  overflow:hidden;
+}
+
+.wrapper div {
+  min-height: 150px;
+  padding: 10px;
+}
+#one {
+  background-color: white;
+  float:left;
+  margin:10px;
+  width:540px;
+  border:2px dashed #ccc;
+}
+#two {
+  background-color: white;
+  overflow:hidden;
+  margin:10px;
+  width:540px;
+  border:2px dashed #ccc;
+}
+
+@media screen and (max-width: 400px) {
+  #one {
+    float: none;
+    margin-right:0;
+    width:auto;
+    border:0;
+    border-bottom:2px solid #000;
+  }
+}
 .main-container.container,
 .rtl .main-container.container {
   padding-left: 0;

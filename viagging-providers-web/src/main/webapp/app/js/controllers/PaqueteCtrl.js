@@ -28,6 +28,7 @@ $scope.paquete = {
             $scope.events = data;
         }).
         error(function(data, status, headers, config) {
+            $scope.events = [];
         });
     });
 
@@ -222,14 +223,12 @@ $scope.reporte = {
   	    }
   	 }
      
-	   $scope.getPackages = function(filtro) {
-	alert("getPackages")
+	   $scope.getPackages = function() {
            userData = userService.getUserData();
            idUser = userData.idUser;
            $http.get('http://localhost:8090/api/events/user/'+idUser).
            success(function(data, status, headers, config) {
                $scope.events = data;
-               alert("j");
                console.info($scope.events);
            }).
            error(function(data, status, headers, config) {
@@ -238,7 +237,6 @@ $scope.reporte = {
 	   
 
 	   $scope.getEvent = function(idEvento) {
-		   alert(idEvento);
            $http.get('http://localhost:8090/api/events/'+idEvento).
            success(function(data, status, headers, config) {
                $scope.event = data;
@@ -315,6 +313,7 @@ $scope.reporte = {
 					console.log(data);
 					alert("Evento actualizado");
 					 $scope.ocultarSeccionActualizarPaquete = true;
+                 $scope.getPackages();
 			}).
 			  error(function(data, status, headers, config) {
 				  alert("Error al actualizar evento");

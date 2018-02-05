@@ -1,59 +1,93 @@
-<div class="login-container">
+<div>
+	<!--div class="login-container"-->
 	<div class="center">
 		<h1>
-			<i class="ace-icon fa fa-leaf green"></i> <span class="red">VIAGGING</span>
+			<i class="ace-icon fa fa-leaf green"></i> <span class="red">EVENTOS</span>
 		</h1>
-		<h4 class="blue" id="id-company-text">&copy; Orange</h4>
+		<h4 class="blue" id="id-company-text">&copy; Rivera</h4>
 	</div>
-
-	<div class="space-6"></div>
-
-	<div class="position-relative">
-		<div id="login-box" class="login-box visible widget-box no-border">
-			<div class="widget-body">
-				<div class="widget-main">
-					<h4 class="header blue lighter bigger">
-						<i class="ace-icon fa fa-coffee green"></i> Login
-					</h4>
-
-					<div class="space-6"></div>
-					<div ng-app="viaggingApp" ng-controller="LoginCtrl">
-						<form ng-submit="loginUser()">
-							<fieldset>
-								<label class="block clearfix"> <span
-									class="block input-icon input-icon-right"> <input
-										type="text" class="form-control" placeholder="Usuario"
-										ng-model="userLogin.email" /> <i class="ace-icon fa fa-user"></i>
-								</span>
-								</label> <label class="block clearfix"> <span
-									class="block input-icon input-icon-right"> <input
-										type="password" class="form-control" placeholder="Contraseña"
-										ng-model="userLogin.password" /> <i
-										class="ace-icon fa fa-lock"></i>
-								</span>
-								</label>
-
-								<div class="space"></div>
-
-								<div class="clearfix">
-									<label class="inline"> <input type="checkbox"
-										class="ace" /> <span class="lbl"> Recordarme</span>
+    <div class="wrapper">
+		<div id="one" float="left" class="position-relative">
+			<div id="login-box" class="login-box visible widget-box no-border">
+				<div class="widget-body">
+					<div class="widget-main">
+						<h4 class="header blue lighter bigger">
+							<i class="ace-icon fa fa-coffee green"></i> Registrarse
+						</h4>
+						<div ng-app="viaggingApp" ng-controller="LoginCtrl">
+							<form name="userForm" ng-submit="createUser()">
+								<fieldset>
+									<label class="block clearfix"> <span
+										class="block input-icon input-icon-right"> <input
+											type="text" class="form-control" placeholder="Email" required
+											ng-model="userNewLogin.email" /> <i class="ace-icon fa fa-user"></i>
+										</span>
+									</label>
+									<label class="block clearfix"> <span
+										class="block input-icon input-icon-right"> <input
+											type="password" class="form-control" placeholder="Contraseña" required
+											ng-model="userNewLogin.password" /> <i
+											class="ace-icon fa fa-lock"></i>
+										</span>
+									</label>
+									<label class="block clearfix"> <span
+											class="block input-icon input-icon-right"> <input
+											type="password" class="form-control" placeholder="Repetir Contraseña" required
+											ng-model="userNewLogin.repeatpassword" /> <i
+											class="ace-icon fa fa-lock"></i>
+										</span>
 									</label>
 
-									<button type="submit"
-										class="width-35 pull-right btn btn-sm btn-primary">
-										<i class="ace-icon fa fa-key"></i> <span class="bigger-110">Login</span>
-									</button>
-								</div>
-
-								<div class="space-4"></div>
-							</fieldset>
-						</form>
+									<div class="clearfix">
+										<button type="submit" ng-disabled="userForm.$invalid"
+											class="width-35 pull-right btn btn-sm btn-primary">
+											<i class="ace-icon fa fa-user"></i> <span class="bigger-110">Abrir cuenta</span>
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
+			<!-- /.login-box -->
 		</div>
-		<!-- /.login-box -->
+		<!-- /.position-relative -->
+		<div id="two" float="right"  class="position-relative">
+			<div id="login-box1" class="login-box visible widget-box no-border">
+				<div class="widget-body">
+					<div class="widget-main">
+						<h4 class="header blue lighter bigger">
+							<i class="ace-icon fa fa-coffee green"></i> Iniciar sesión
+						</h4>
+						<div ng-app="viaggingApp" ng-controller="LoginCtrl">
+							<form ng-submit="loginUser()">
+								<fieldset>
+									<label class="block clearfix"> <span
+											class="block input-icon input-icon-right"> <input
+											type="text" class="form-control" placeholder="Email"
+											ng-model="userLogin.email" /> <i class="ace-icon fa fa-user"></i>
+									</span>
+									</label> <label class="block clearfix"> <span
+										class="block input-icon input-icon-right"> <input
+										type="password" class="form-control" placeholder="Contraseña"
+										ng-model="userLogin.password" /> <i
+										class="ace-icon fa fa-lock"></i>
+									</span>
+								</label>
+									<div class="clearfix">
+										<button type="submit"
+												class="width-35 pull-right btn btn-sm btn-primary">
+											<i class="ace-icon fa fa-key"></i> <span class="bigger-110">Iniciar</span>
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.login-box -->
+		</div>
 	</div>
-	<!-- /.position-relative -->
 </div>

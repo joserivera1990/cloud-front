@@ -27,11 +27,7 @@ providersApp.controller('AlojamientoCtrl', ['$scope', 'userService', 'FileUpload
 
 	$scope.guardarEvento = function(fevento) {
         userData = userService.getUserData();
-        console.log("userService.getUserData()");
-        console.log(userService.getUserData());
-        console.log(userData.idUser);
         $scope.evento.idUser = userData.idUser;
-        $scope.evento.idEvent = 123
 		console.log($scope.evento);
 		$http.post('http://localhost:8090/api/events', angular.toJson($scope.evento), {
 			headers: {"Content-Type": "application/json"},

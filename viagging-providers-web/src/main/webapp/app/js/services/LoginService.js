@@ -23,6 +23,33 @@ providersApp.service('loginService', ['$http', '$q', 'userService', function($ht
 	        	 
 	        }).error(errorCallback);
 		},
+
+        createUser : function(userNewLogin){
+
+			if(userNewLogin.password == userNewLogin.repeatpassword) {
+                return $http({
+                    url: "http://localhost:8090/api/user",
+                    method: "POST",
+                    data: userNewLogin,
+                    cache: false
+                }).success(function(response){
+                	if(response == true){
+                        alert("Usuario creado, por favor iniciar sesión");
+                        userNewLogin.email = "";
+                        userNewLogin.password = "";
+                        userNewLogin.repeatpassword = "";
+                    } else {
+                        alert("Usuario ya existe");
+                        userNewLogin.password = "";
+                        userNewLogin.repeatpassword = "";
+                    }
+                });
+			} else {
+				alert("Contraseñas son diferentes");
+                userNewLogin.password = "";
+                userNewLogin.repeatpassword = "";
+			}
+        },
 		
 		logoutUser : function(){
 			userService.removeUserData();

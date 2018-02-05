@@ -14,19 +14,23 @@ providersApp.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'loginSe
 	'use strict';
 	
 	$scope.userLogin = {
-        email: "text",
+        email: "",
 		password: "",
 		profile:"Proveedor"
 	};
+
+    $scope.userNewLogin = {
+        email: "",
+        password: "",
+        repeatpassword:""
+    };
 	
 	var successCallback = function(map){
 		$scope.userData = map;
-		alert("Bienvenido de nuevo " + $scope.userData.name + " " + $scope.userData.lastName);
-		//$rootScope.showReport = map["derivadorReportes"];
-		//$rootScope.showMessage = map["derivadorMensajes"];
+		alert("Bienvenido de nuevo ");
 		$rootScope.$broadcast('USER_LOGGED_IN', $scope.userData);
         $rootScope.$broadcast('USER_LOGGED_IN', "$scope.userData");
-		$state.go("alojamiento");
+		$state.go("pregunta");
 	};
 	
 	var errorCallback = function(){
@@ -37,7 +41,11 @@ providersApp.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'loginSe
 	$scope.loginUser = function(){
 		loginService.loginUser($scope.userLogin, successCallback, errorCallback);
 	};
-	
+
+    $scope.createUser = function(){
+        loginService.createUser($scope.userNewLogin);
+    };
+
 	$scope.isDisplayed=function(item, filter){
 		console.log("ingreso a  -- ");
 		    return true;
