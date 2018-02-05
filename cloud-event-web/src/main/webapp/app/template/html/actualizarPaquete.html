@@ -104,7 +104,7 @@
 								<label class="col-sm-3 control-label no-padding-right"
 									   for="timepicker">Fecha Inicio</label>
 								<div class="col-sm-3">
-									<input type="text" uib-datepicker-popup ng-model="event.initialDate" readonly is-open="statusInitial.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+									<input type="text" uib-datepicker-popup ng-model="event.initialDate" readonly is-open="statusInitial.opened" min-date="minDate" max-date="maxDate" ng-required="true" close-text="Close" />
 									<button type="button" ng-click="openInitial($event)">
 										<i class="glyphicon glyphicon-calendar"></i>
 									</button>
@@ -113,7 +113,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Fecha Fin </label>
 								<div class="col-sm-3">
-									<input type="text"  uib-datepicker-popup ng-model="event.finalDate" readonly is-open="statusFinal.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+									<input type="text"  uib-datepicker-popup ng-model="event.finalDate" readonly is-open="statusFinal.opened" min-date="minDate" max-date="maxDate"  ng-required="true" close-text="Close" />
 									<button type="button"  ng-click="openFinal($event)">
 										<i class="glyphicon glyphicon-calendar"></i>
 									</button>

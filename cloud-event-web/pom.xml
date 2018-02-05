@@ -6,7 +6,7 @@
 		<artifactId>viagging-app</artifactId>
 		<version>1.0</version>
 	</parent>
-	<artifactId>viagging-providers-web</artifactId>
+	<artifactId>cloud-event-web</artifactId>
 	<packaging>war</packaging>
 	<properties>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,6 +44,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-       <finalName>viagging-providers-web</finalName>
+       <finalName>cloud-event-web</finalName>
    </build>
 </project>

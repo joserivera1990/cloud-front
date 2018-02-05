@@ -4,7 +4,7 @@
 		<div class="page-header">
 				<h1>
 					Eventos <small> <i
-						class="ace-icon fa fa-angle-double-right"></i> Crear Evento11
+						class="ace-icon fa fa-angle-double-right"></i> Crear Evento
 					</small>
 				</h1>
 		</div>
@@ -73,7 +73,7 @@
 						<label class="col-sm-3 control-label no-padding-right"
 							   for="timepicker">Fecha Inicio</label>
 						<div class="col-sm-3">
-							<input type="text" uib-datepicker-popup ng-model="evento.initialDate" readonly is-open="statusInitial.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+							<input type="text" uib-datepicker-popup ng-model="evento.initialDate" readonly is-open="statusInitial.opened" min-date="minDate" max-date="maxDate" ng-required="true" close-text="Close" />
 							<button type="button" ng-click="openInitial($event)">
 								<i class="glyphicon glyphicon-calendar"></i>
 							</button>

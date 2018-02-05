@@ -29,15 +29,20 @@ providersApp.controller('AlojamientoCtrl', ['$scope', 'userService', 'FileUpload
         userData = userService.getUserData();
         $scope.evento.idUser = userData.idUser;
 		console.log($scope.evento);
-		$http.post('http://localhost:8090/api/events', angular.toJson($scope.evento), {
-			headers: {"Content-Type": "application/json"},
-			transformRequest: angular.identity
-		}).success(function(data, status, headers, config) {
-            alert("El evento fue creado!");
-			reset();
-		}).error(function(data, status, headers, config) {
-			alert("Error en la creación");
-		}); 
+		if($scope.evento.finalDate > $scope.evento.initialDate) {
+            $http.post('http://localhost:8090/api/events', angular.toJson($scope.evento), {
+                headers: {"Content-Type": "application/json"},
+                transformRequest: angular.identity
+            }).success(function(data, status, headers, config) {
+                alert("El evento fue creado!");
+                reset();
+            }).error(function(data, status, headers, config) {
+                alert("Error en la creación");
+            });
+        } else {
+			alert("Fecha Final debe ser mayor a fecha inicial.");
+		}
+
 	}
 
 	function reset() {

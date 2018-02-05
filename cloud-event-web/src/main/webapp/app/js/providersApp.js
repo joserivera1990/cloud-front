@@ -15,7 +15,7 @@ providersApp.config(['$stateProvider', function($stateProvider){
 			controller: 'SearchCtrl',
 		})
 		.state("alojamiento", {
-			url: "/alojamiento",
+			url: "/crearevento",
 			templateUrl: 'template/html/crearalojamiento.html',
 			controller: 'AlojamientoCtrl',
 		})
@@ -45,12 +45,12 @@ providersApp.config(['$stateProvider', function($stateProvider){
 			controller: 'samplecontroller',
 		})
 		.state("eliminarpaquete", {
-			url: "/eliminarpaquete",
+			url: "/eliminarevento",
 			templateUrl: 'template/html/eliminarPaquete.html',
 			controller: 'samplecontroller',
 		})
 		.state("actualizarpaquete", {
-			url: "/actualizarpaquete",
+			url: "/actualizarevento",
 			templateUrl: 'template/html/actualizarPaquete.html',
 			controller: 'samplecontroller',
 		})
@@ -59,8 +59,8 @@ providersApp.config(['$stateProvider', function($stateProvider){
 			templateUrl: 'template/html/crearPaquete.html',
 			controller: 'samplecontroller',
 		})
-		.state("pregunta", {
-			url: "/pregunta",
+		.state("mostrareventos", {
+			url: "/mostrareventos",
 			templateUrl: 'template/html/consultarpreguntas.html',
 			controller: 'PreguntasCtrl',
 		})

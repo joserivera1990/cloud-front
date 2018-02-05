@@ -30,7 +30,7 @@ providersApp.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'loginSe
 		alert("Bienvenido de nuevo ");
 		$rootScope.$broadcast('USER_LOGGED_IN', $scope.userData);
         $rootScope.$broadcast('USER_LOGGED_IN', "$scope.userData");
-		$state.go("pregunta");
+		$state.go("mostrareventos");
 	};
 	
 	var errorCallback = function(){

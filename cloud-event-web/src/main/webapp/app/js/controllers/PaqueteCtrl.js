@@ -305,18 +305,12 @@ $scope.reporte = {
 	     }
 
 		$scope.updateEvent = function() {
-			console.log($scope.event);
-			console.log("idUsuario"+$scope.event.idUser);
-			 $http.put('http://localhost:8090/api/events',$scope.event).
-				success(function(data, status, headers, config) {
-					console.log(status);
-					console.log(data);
-					alert("Evento actualizado");
-					 $scope.ocultarSeccionActualizarPaquete = true;
-                 $scope.getPackages();
-			}).
-			  error(function(data, status, headers, config) {
-				  alert("Error al actualizar evento");
+			$http.put('http://localhost:8090/api/events', $scope.event).success(function (data, status, headers, config) {
+				alert("Evento actualizado");
+				$scope.ocultarSeccionActualizarPaquete = true;
+				$scope.getPackages();
+			}).error(function (data, status, headers, config) {
+				alert("Error al actualizar evento");
 			});
 		}
 		
